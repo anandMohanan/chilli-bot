@@ -8,7 +8,7 @@ const player = new Player(client);
 
 client.player = player;
 
-require('./handler/module.js')(client);
+require('./handler/Module.js')(client);
 require('./handler/Event.js')(client);
 
 require('dotenv').config(); // npm install dotenv
