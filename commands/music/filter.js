@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
       .setTitle(
         '**Please use these Filters**\n`bassboost`, `8D`, `vaporwave`, `nightcore`, `phaser`, `tremolo`, `vibrato`, `reverse`, `treble`, `normalizer`, `surrounding`, `pulsator`, `subboost`, `karaoke`, `flanger`, `gate`, `haas`, `mcompand`'
       )
-      .setColor('#2ED8BA')
+      .setColor('#674AB3 ')
       .setTimestamp();
     return message.channel.send(filterValid);
   }
@@ -53,7 +53,7 @@ exports.run = async (client, message, args) => {
       .setTitle(
         `I'm **adding** the filter to the music, please wait...\nNote : the longer the music is, the longer this will take `
       )
-      .setColor('#2ED8BA')
+      .setColor('#674AB3 ')
       .setTimestamp();
     message.channel.send(filterSet);
   } else {
@@ -61,7 +61,7 @@ exports.run = async (client, message, args) => {
       .setTitle(
         `I'm **disabling** the filter on the music, please wait...\nNote : the longer the music is playing, the longer this will take `
       )
-      .setColor('#2ED8BA')
+      .setColor('#674AB3 ')
       .setTimestamp();
     message.channel.send(filterNoSet);
   }

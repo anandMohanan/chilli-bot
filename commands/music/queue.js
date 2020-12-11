@@ -39,7 +39,7 @@ exports.run = async (client, message, args) => {
               : ``
           }`)
     )
-    .setColor('#2ED8BA');
+    .setColor('#F96CFF ');
 
   message.channel.send(queueSet);
 };

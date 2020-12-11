@@ -29,7 +29,8 @@ exports.run = async (client, message, args) => {
     client.player.setRepeatMode(message, true);
     let loopEnabled = new MessageEmbed()
       .setTitle(`Repeat mode **enabled** `)
-      .setColor('#2ED8BA')
+      .setColor('#65B8BF ')
+      .setThumbnail('https://media.giphy.com/media/rh0W2vpayXMac/giphy.gif')
       .setTimestamp();
     return message.channel.send(loopEnabled);
   }

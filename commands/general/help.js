@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
     if (!client.config.owners.includes(message.author.id))
       module = client.helps.array().filter((x) => !x.hide);
     const embed = new Discord.MessageEmbed()
-      .setColor('#2ED8BA')
+      .setColor('#18363E ')
       .setThumbnail(message.guild.iconURL())
       .setTimestamp()
       .setDescription(

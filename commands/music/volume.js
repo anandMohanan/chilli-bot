@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
   if (!args[0]) {
     let volumeValid = new MessageEmbed()
       .setTitle(`Please enter a number `)
-      .setColor('#2ED8BA')
+      .setColor('#aa6f73')
       .setTimestamp();
     return message.channel.send(volumeValid).then((msg) => {
       msg.delete({ timeout: 10000 });
@@ -30,7 +30,7 @@ exports.run = async (client, message, args) => {
   if (isNaN(args[0]) || 100 < args[0] || args[0] <= 0) {
     let volumeNumber = new MessageEmbed()
       .setTitle(`Please use a number between 0 - 100.`)
-      .setColor('#2ED8BA')
+      .setColor('#aa6f73')
       .setTimestamp();
     return message.channel
       .send(volumeNumber)
@@ -47,14 +47,15 @@ exports.run = async (client, message, args) => {
   ) {
     let volumeNumberSelect = new MessageEmbed()
       .setTitle(`Please use a number to set volume.`)
-      .setColor('#2ED8BA')
+      .setColor('#aa6f73')
       .setTimestamp();
     return message.reply(volumeNumberSelect).catch(console.error);
   }
   client.player.setVolume(message, parseInt(args.join(' ')));
   let volumeDone = new MessageEmbed()
     .setTitle(`Volume set to **${args.join(' ')}%** `)
-    .setColor('#2ED8BA')
+    .setThumbnail('https://media.giphy.com/media/jMz5jWatM1n7q/giphy.gif')
+    .setColor('#aa6f73')
     .setTimestamp();
   message.channel.send(volumeDone);
 };

@@ -22,7 +22,8 @@ exports.run = async (client, message, args) => {
   client.player.stop(message);
   let stopDone = new MessageEmbed()
     .setTitle(`${message.author.tag} stopped the music!`)
-    .setColor('#2ED8BA')
+    .setThumbnail('https://media.giphy.com/media/l0Nvr0QqmtpiizdhC/giphy.gif')
+    .setColor('#f6e0b5')
     .setTimestamp();
 
   message.channel.send(stopDone);

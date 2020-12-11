@@ -22,7 +22,8 @@ exports.run = async (client, message, args) => {
     .setTitle(
       `Song ${client.player.getQueue(message).playing.title} **paused** `
     )
-    .setColor('#2ED8BA')
+    .setThumbnail('https://media.giphy.com/media/l0HlKrB02QY0f1mbm/giphy.gif')
+    .setColor('#FA92FB')
     .setTimestamp();
   message.channel.send(pauseSet);
 };

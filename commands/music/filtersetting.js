@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
       { name: 'Filters', value: filtersStatuses[0].join('\n'), inline: true },
       { name: '** **', value: filtersStatuses[1].join('\n'), inline: true }
     )
-    .setColor('#2ED8BA')
+    .setColor('#A348A6 ')
     .setTimestamp();
 
   message.channel.send(wfilter);

@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
   let npSet = new MessageEmbed()
     .setTitle(track.title)
     .setThumbnail(track.thumbnail)
-    .setColor('#2ED8BA')
+    .setColor('#9075D8 ')
     .addFields(
       { name: 'Channel', value: track.author, inline: true },
       {

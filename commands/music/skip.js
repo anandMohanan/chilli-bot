@@ -21,7 +21,10 @@ exports.run = async (client, message, args) => {
   client.player.skip(message);
   let skipDone = new MessageEmbed()
     .setTitle(`${message.author.tag}  ⏭  skipped the song`)
-    .setColor('#2ED8BA')
+    .setThumbnail(
+      'https://media.giphy.com/media/3oEduN21VyqC7cwTIs/giphy-downsized.gif'
+    )
+    .setColor('#f6e0b5')
     .setTimestamp();
   message.channel.send(skipDone);
 };

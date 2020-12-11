@@ -11,16 +11,15 @@ client.player = player;
 require('./handler/Module.js')(client);
 require('./handler/Event.js')(client);
 
-require('dotenv').config(); // npm install dotenv
-
 client.package = require('./package.json');
 
 client.player
   .on('trackStart', (message, track) => {
     let trackStart = new MessageEmbed()
       .setAuthor(`Now playing ${track.title} `)
+      .setThumbnail(track.thumbnail)
       .setTimestamp()
-      .setColor('#2ED8BA');
+      .setColor('#556DC8 ');
     message.channel.send(trackStart);
   })
 
@@ -29,14 +28,18 @@ client.player
     console.log(track);
     let trackAdd = new MessageEmbed()
       .setAuthor(`Added to the queue !`)
+      .setThumbnail('https://media.giphy.com/media/JxxkWxHOEDrq0/giphy.gif')
       .setTimestamp()
-      .setColor('#2ED8BA');
+      .setColor('#DD517F ');
     message.channel.send(trackAdd);
   })
   .on('playlistAdd', (message, playlist) => {
     let playAdd = new MessageEmbed()
       .setTitle(`${playlist.title} has been added to the queue`)
-      .setColor('#2ED8BA')
+      .setThumbnail(
+        'https://media.giphy.com/media/xT9DPEPymVhAwi0mJy/giphy.gif'
+      )
+      .setColor('#461E52 ')
       .setTimestamp();
     message.channel.send(playAdd);
   })
@@ -45,8 +48,9 @@ client.player
   .on('searchResults', (message, query, tracks) => {
     let searchEmbed = new MessageEmbed()
       .setAuthor(`Here are your search results for ${query}`)
+      .setThumbnail('https://media.giphy.com/media/xGdvlOVSWaDvi/giphy.gif')
       .setTimestamp()
-      .setColor('#2ED8BA')
+      .setColor('#7998EE')
       .setDescription(
         `${tracks.map((t, i) => `**${i + 1}** - ${t.title}`).join('\n')}`
       );
@@ -57,7 +61,7 @@ client.player
       .setTitle(
         `You must send a valid number between **1** and **${tracks.length}** !`
       )
-      .setColor('#2ED8BA')
+      .setColor('#E68E36 ')
       .setTimestamp();
     message.channel.send(searchInvalidCancel);
   })
@@ -66,7 +70,7 @@ client.player
       .setTitle(
         `You did not provide a valid response ... Please send the command again !`
       )
-      .setColor('#2ED8BA')
+      .setColor('#66545e')
       .setTimestamp();
     message.channel.send(searchCancel);
   })
@@ -74,7 +78,7 @@ client.player
   .on('noResults', (message, query) => {
     let noSearch = new MessageEmbed()
       .setTitle(`No results found on YouTube for ${query} !`)
-      .setColor('#2ED8BA')
+      .setColor('#66545e')
       .setTimestamp();
     message.channel.send(noSearch);
   })
@@ -83,7 +87,7 @@ client.player
   .on('queueEnd', (message, queue) => {
     let queueEnd = new MessageEmbed()
       .setTitle(`Music stopped as there is no more music in the queue !`)
-      .setColor('#2ED8BA')
+      .setColor('#7998EE')
       .setTimestamp();
     message.channel.send(queueEnd);
   })
@@ -92,14 +96,14 @@ client.player
       .setTitle(
         ` Music stopped as there is no more member in the voice channel !`
       )
-      .setColor('#2ED8BA')
+      .setColor('#461E52 ')
       .setTimestamp();
     message.channel.send(filternoMember);
   })
   .on('botDisconnect', (message, queue) => {
     let musicStop = new MessageEmbed()
       .setTitle(`Music stopped as i have been disconnected from the channel !`)
-      .setColor('#2ED8BA')
+      .setColor('#CA7CD8  ')
       .setTimestamp();
     message.channel.send(musicStop);
   })

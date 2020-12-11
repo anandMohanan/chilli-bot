@@ -23,7 +23,10 @@ exports.run = async (client, message, args) => {
         client.player.getQueue(message).tracks.length
       }** song(s) `
     )
-    .setColor('#2ED8BA')
+    .setThumbnail(
+      'https://media.giphy.com/media/MZunklLWJfb0YTjneF/giphy-downsized.gif'
+    )
+    .setColor('#A653F5 ')
     .setTimestamp();
   return message.channel.send(shuffleDone);
 };

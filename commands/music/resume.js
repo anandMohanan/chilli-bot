@@ -20,7 +20,8 @@ exports.run = async (client, message, args) => {
 
   let resumeDone = new MessageEmbed()
     .setTitle(`${message.author.tag}  ▶  resumed the music!`)
-    .setColor('#2ED8BA')
+    .setColor('#8F8CF2 ')
+    .setThumbnail('https://media.giphy.com/media/l0HFixTtvQ78aaxqw/giphy.gif')
     .setTimestamp();
   message.channel.send(resumeDone);
 };
