@@ -7,6 +7,7 @@ exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
     let filternoVoice = new MessageEmbed()
       .setTitle('You need to join a voice channel first!')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
       .setTimestamp();
     return message.channel.send(filternoVoice);
@@ -15,6 +16,7 @@ exports.run = async (client, message, args) => {
     let filterNo = new MessageEmbed()
       .setTitle(`No music playing on this server `)
       .setColor('#2ED8BA')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
     return message.channel.send(filterNo);
   }
@@ -75,6 +77,6 @@ exports.help = {
 
 exports.conf = {
   aliases: ['f'],
-  cooldown: 0, // This number is a seconds, not a milliseconds.
+  cooldown: 10, // This number is a seconds, not a milliseconds.
   // 1 = 1 seconds.
 };

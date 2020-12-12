@@ -6,12 +6,14 @@ exports.run = async (client, message, args) => {
     let shufflenoVoice = new MessageEmbed()
       .setTitle('You need to join a voice channel first!')
       .setColor('#2ED8BA')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
     return message.channel.send(shufflenoVoice);
   }
   if (!client.player.getQueue(message)) {
     let shuffleNo = new MessageEmbed()
       .setTitle(`No music playing on this server `)
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
       .setTimestamp();
     return message.channel.send(shuffleNo);

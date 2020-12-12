@@ -19,6 +19,7 @@ client.player
       .setAuthor(`Now playing ${track.title} `)
       .setThumbnail(track.thumbnail)
       .setTimestamp()
+      .setFooter(`Requested by: ${track.requestedBy.username}`)
       .setColor('#556DC8 ');
     message.channel.send(trackStart);
   })
@@ -62,6 +63,7 @@ client.player
         `You must send a valid number between **1** and **${tracks.length}** !`
       )
       .setColor('#E68E36 ')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
     message.channel.send(searchInvalidCancel);
   })
@@ -71,6 +73,7 @@ client.player
         `You did not provide a valid response ... Please send the command again !`
       )
       .setColor('#66545e')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
     message.channel.send(searchCancel);
   })
@@ -79,6 +82,7 @@ client.player
     let noSearch = new MessageEmbed()
       .setTitle(`No results found on YouTube for ${query} !`)
       .setColor('#66545e')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
     message.channel.send(noSearch);
   })
@@ -88,6 +92,7 @@ client.player
     let queueEnd = new MessageEmbed()
       .setTitle(`Music stopped as there is no more music in the queue !`)
       .setColor('#7998EE')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
     message.channel.send(queueEnd);
   })
@@ -97,6 +102,7 @@ client.player
         ` Music stopped as there is no more member in the voice channel !`
       )
       .setColor('#461E52 ')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
     message.channel.send(filternoMember);
   })
@@ -104,6 +110,7 @@ client.player
     let musicStop = new MessageEmbed()
       .setTitle(`Music stopped as i have been disconnected from the channel !`)
       .setColor('#CA7CD8  ')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
     message.channel.send(musicStop);
   })
@@ -115,6 +122,7 @@ client.player
         let errorNo = new MessageEmbed()
           .setTitle(`There is no music being played on this server !`)
           .setColor('#2ED8BA')
+          .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
           .setTimestamp();
         message.channel.send(errorNo);
         break;
@@ -122,6 +130,7 @@ client.player
         let errorNoConnect = new MessageEmbed()
           .setTitle(`Not connected in any voice channel !`)
           .setColor('#2ED8BA')
+          .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
           .setTimestamp();
         message.channel.send(errorNoConnect);
         break;
@@ -130,6 +139,7 @@ client.player
           .setTitle(
             `I am not able to join your voice channel, please check my permissions !`
           )
+          .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
           .setColor('#2ED8BA')
           .setTimestamp();
         message.channel.send(errorNoPerms);
@@ -138,6 +148,7 @@ client.player
         let errorDefault = new MessageEmbed()
           .setTitle(`Something went wrong ... Error : ${error}`)
           .setColor('#2ED8BA')
+          .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
           .setTimestamp();
         message.channel.send(errorDefault);
     }

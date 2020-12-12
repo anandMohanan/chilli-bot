@@ -7,6 +7,7 @@ exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
     let wfilternoVoice = new MessageEmbed()
       .setTitle('You need to join a voice channel first!')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
       .setTimestamp();
     return message.reply(wfilternoVoice).catch(console.error);
@@ -15,6 +16,7 @@ exports.run = async (client, message, args) => {
     let wfilternoPlay = new MessageEmbed()
       .setTitle('Nothing playing in this server')
       .setColor('#2ED8BA')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
     return message.channel.send(wfilternoPlay).then((msg) => {
       msg.delete({ timeout: 10000 });

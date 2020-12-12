@@ -5,6 +5,7 @@ exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
     let resumenoVoice = new MessageEmbed()
       .setTitle('You need to join a voice channel first!')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
       .setTimestamp();
     return message.channel.send(resumenoVoice);
@@ -13,6 +14,7 @@ exports.run = async (client, message, args) => {
     let resumeNo = new MessageEmbed()
       .setTitle(`No music playing on this server `)
       .setColor('#2ED8BA')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
     return message.channel.send(resumeNo);
   }

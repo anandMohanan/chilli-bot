@@ -5,6 +5,7 @@ exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
     let playnoVoice = new MessageEmbed()
       .setTitle('You need to join a voice channel first!')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
       .setTimestamp();
     return message.channel.send(playnoVoice);
@@ -12,6 +13,7 @@ exports.run = async (client, message, args) => {
   if (!args[0]) {
     let playUsage = new MessageEmbed()
       .setTitle(`Usage: =play <YouTube URL | Video Name >`)
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
       .setTimestamp();
     return message.channel.send(playUsage);

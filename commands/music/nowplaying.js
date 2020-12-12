@@ -5,6 +5,7 @@ exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
     let npnoVoice = new MessageEmbed()
       .setTitle('You need to join a voice channel first!')
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
       .setTimestamp();
     return message.channel.send(npnoVoice);
@@ -12,6 +13,7 @@ exports.run = async (client, message, args) => {
   if (!client.player.getQueue(message)) {
     let npNo = new MessageEmbed()
       .setTitle(`No music playing on this server `)
+      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
       .setTimestamp();
     return message.channel.send(npNo);

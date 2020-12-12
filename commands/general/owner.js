@@ -3,26 +3,23 @@ const { MessageEmbed } = require('discord.js');
 
 exports.run = async (client, message, args) => {
   let pingEmbed = new MessageEmbed()
-    .setTitle(`**Update**`)
+    .setTitle(`**Owner**`)
     .setThumbnail(message.guild.iconURL())
-    .setDescription(
-      '**1**:Supports youtube playlist and youtube links links\n**2**:Supports soundcloud links\n**3**:Supports spotify song links'
-    )
-    .setFooter('**Spotify playlist support coming soon**')
+    .setDescription(`Bot Owner: <@376632059923267584>`)
     .setColor('#2ED8BA')
     .setTimestamp();
   message.channel.send(pingEmbed);
 };
 
 exports.help = {
-  name: 'update',
-  description: 'New features',
-  usage: '=ping',
-  example: '=ping',
+  name: 'owner',
+  description: 'naan dhan da owner punda',
+  usage: '=owner',
+  example: '=owner',
 };
 
 exports.conf = {
-  aliases: ['version'],
+  aliases: ['o'],
   cooldown: 5, // This number is a seconds, not a milliseconds.
   // 1 = 1 seconds.
 };
