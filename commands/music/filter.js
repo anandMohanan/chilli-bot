@@ -64,6 +64,7 @@ exports.run = async (client, message, args) => {
         `I'm **disabling** the filter on the music, please wait...\nNote : the longer the music is playing, the longer this will take `
       )
       .setColor('#674AB3 ')
+
       .setTimestamp();
     message.channel.send(filterNoSet);
   }

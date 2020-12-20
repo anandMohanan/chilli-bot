@@ -31,6 +31,7 @@ client.player
       .setAuthor(`Added to the queue !`)
       .setThumbnail('https://media.giphy.com/media/JxxkWxHOEDrq0/giphy.gif')
       .setTimestamp()
+
       .setColor('#DD517F ');
     message.channel.send(trackAdd);
   })

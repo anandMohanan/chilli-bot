@@ -15,6 +15,10 @@ exports.run = async (client, message, args) => {
       .setTitle('There is nothing playing that I could skip for you.')
       .setColor('#2ED8BA')
       .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
+      .setFooter(
+        message.member.displayName,
+        message.author.displayAvatarURL({ dynamic: true })
+      )
       .setTimestamp();
     return message.channel.send(skipNo).then((msg) => {
       msg.delete({ timeout: 30000 });
@@ -26,6 +30,7 @@ exports.run = async (client, message, args) => {
     .setThumbnail(
       'https://media.giphy.com/media/3oEduN21VyqC7cwTIs/giphy-downsized.gif'
     )
+
     .setColor('#f6e0b5')
 
     .setTimestamp();

@@ -4,7 +4,6 @@ const { MessageEmbed } = require('discord.js');
 exports.run = async (client, message, args) => {
   let pingEmbed = new MessageEmbed()
     .setTitle(`**Owner**`)
-    .setThumbnail(message.guild.iconURL())
     .setDescription(`Bot Owner: <@376632059923267584>`)
     .setColor('#2ED8BA')
     .setTimestamp();

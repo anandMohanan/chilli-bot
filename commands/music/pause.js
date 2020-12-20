@@ -26,6 +26,7 @@ exports.run = async (client, message, args) => {
     )
     .setThumbnail('https://media.giphy.com/media/l0HlKrB02QY0f1mbm/giphy.gif')
     .setColor('#FA92FB')
+
     .setTimestamp();
   message.channel.send(pauseSet);
 };

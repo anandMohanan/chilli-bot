@@ -15,6 +15,10 @@ exports.run = async (client, message, args) => {
       .setTitle(`No music playing on this server `)
       .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
+      .setFooter(
+        message.member.displayName,
+        message.author.displayAvatarURL({ dynamic: true })
+      )
       .setTimestamp();
     return message.channel.send(shuffleNo);
   }
@@ -29,6 +33,7 @@ exports.run = async (client, message, args) => {
       'https://media.giphy.com/media/MZunklLWJfb0YTjneF/giphy-downsized.gif'
     )
     .setColor('#A653F5 ')
+
     .setTimestamp();
   return message.channel.send(shuffleDone);
 };

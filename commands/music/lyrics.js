@@ -16,6 +16,7 @@ exports.run = async (client, message, args) => {
     .setAuthor(`${songName} — Lyrics`)
     .setColor('YELLOW')
     .setDescription(lyrics)
+    
     .setTimestamp();
 
   if (lyricsEmbed.description.length >= 2048)

@@ -15,6 +15,10 @@ exports.run = async (client, message, args) => {
       .setTitle('Nothing playing in this server')
       .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
+      .setFooter(
+        message.member.displayName,
+        message.author.displayAvatarURL({ dynamic: true })
+      )
       .setTimestamp();
     return message.channel.send(noPlay).then((msg) => {
       msg.delete({ timeout: 10000 });
@@ -57,6 +61,7 @@ exports.run = async (client, message, args) => {
   let volumeDone = new MessageEmbed()
     .setTitle(`Volume set to **${args.join(' ')}%** `)
     .setThumbnail('https://media.giphy.com/media/jMz5jWatM1n7q/giphy.gif')
+
     .setColor('#aa6f73')
     .setTimestamp();
   message.channel.send(volumeDone);

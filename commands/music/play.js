@@ -15,6 +15,7 @@ exports.run = async (client, message, args) => {
       .setTitle(`Usage: =play <YouTube URL | Video Name >`)
       .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
+
       .setTimestamp();
     return message.channel.send(playUsage);
   }

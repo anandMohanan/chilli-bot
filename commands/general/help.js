@@ -17,7 +17,11 @@ exports.run = async (client, message, args) => {
       .setDescription(
         `Type \`${prefix}help [command]\` to get more specific information about a command.`
       )
-      .setTitle('Chilli');
+      .setTitle('Chilli')
+      .setFooter(
+        message.member.displayName,
+        message.author.displayAvatarURL({ dynamic: true })
+      );
 
     for (const mod of module) {
       // You can change the .join(" | ") to commas, dots or every symbol.
@@ -61,7 +65,11 @@ exports.run = async (client, message, args) => {
         .addField('Cooldown', cooldown)
         .addField('Aliases', aliases, true)
         .addField('Usage', usage, true)
-        .addField('Example', example, true);
+        .addField('Example', example, true)
+        .setFooter(
+          message.member.displayName,
+          message.author.displayAvatarURL({ dynamic: true })
+        );
 
       return message.channel.send(embed);
     } else {

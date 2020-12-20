@@ -5,9 +5,7 @@ exports.run = async (client, message, args) => {
   let pingEmbed = new MessageEmbed()
     .setTitle(`**Update**`)
     .setThumbnail(message.guild.iconURL())
-    .setDescription(
-      '**1**:Supports youtube playlist and youtube links links\n**2**:Supports soundcloud links\n**3**:Supports spotify song links'
-    )
+    .setDescription('added fun commands, try `=h`')
     .setFooter('**Spotify playlist support coming soon**')
     .setColor('#2ED8BA')
     .setTimestamp();

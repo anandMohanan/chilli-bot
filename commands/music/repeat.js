@@ -15,6 +15,10 @@ exports.run = async (client, message, args) => {
       .setTitle(`No music playing on this server `)
       .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
+      .setFooter(
+        message.member.displayName,
+        message.author.displayAvatarURL({ dynamic: true })
+      )
       .setTimestamp();
     return message.channel.send(loopNo);
   }
@@ -25,6 +29,10 @@ exports.run = async (client, message, args) => {
     let loopDisabled = new MessageEmbed()
       .setTitle(`Repeat mode **disabled** `)
       .setColor('#2ED8BA')
+      .setFooter(
+        message.member.displayName,
+        message.author.displayAvatarURL({ dynamic: true })
+      )
       .setTimestamp();
     return message.channel.send(loopDisabled);
   } else {
@@ -32,6 +40,7 @@ exports.run = async (client, message, args) => {
     let loopEnabled = new MessageEmbed()
       .setTitle(`Repeat mode **enabled** `)
       .setColor('#65B8BF ')
+
       .setThumbnail('https://media.giphy.com/media/rh0W2vpayXMac/giphy.gif')
       .setTimestamp();
     return message.channel.send(loopEnabled);

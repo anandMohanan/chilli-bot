@@ -15,6 +15,10 @@ exports.run = async (client, message, args) => {
       .setTitle('There is nothing playing.')
       .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
+      .setFooter(
+        message.member.displayName,
+        message.author.displayAvatarURL({ dynamic: true })
+      )
       .setTimestamp();
     return message.channel.send(stopNo).then((msg) => {
       msg.delete({ timeout: 30000 });
@@ -26,6 +30,7 @@ exports.run = async (client, message, args) => {
     .setTitle(`${message.author.tag} stopped the music!`)
     .setThumbnail('https://media.giphy.com/media/l0Nvr0QqmtpiizdhC/giphy.gif')
     .setColor('#f6e0b5')
+
     .setTimestamp();
 
   message.channel.send(stopDone);

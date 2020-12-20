@@ -17,6 +17,7 @@ exports.run = async (client, message, args) => {
       .setTitle('Nothing playing in this server')
       .setColor('#2ED8BA')
       .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
+
       .setTimestamp();
     return message.channel.send(wfilternoPlay).then((msg) => {
       msg.delete({ timeout: 10000 });
