@@ -13,6 +13,21 @@ require('./handler/Event.js')(client);
 
 client.package = require('./package.json');
 
+client.on('ready', () => {
+  function randomStatus() {
+    let status = [
+      'listening to freak penne',
+      'serving ussr',
+      'starving people',
+      'Kevins world famous chilli',
+      'watching bot porn',
+    ];
+    let rstatus = Math.floor(Math.random() * status.length);
+    client.user.setActivity(status[rstatus], { type: 'WATCHING' });
+  }
+  setInterval(randomStatus, 100000);
+});
+
 client.player
   .on('trackStart', (message, track) => {
     let trackStart = new MessageEmbed()
