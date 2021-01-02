@@ -1,14 +1,18 @@
 const Discord = require('discord.js');
-const fetch = require('snekfetch');
+const fetch = require('node-fetch');
 const { MessageEmbed } = require('discord.js');
 
 exports.run = async (client, message, args) => {
   try {
-    const { body } = await fetch.get('http://api.adviceslip.com/advice');
+    const body = await fetch('http://api.adviceslip.com/advice');
+    const advice = await body.json();
+    const ans = advice.slip.advice;
+    console.log(ans);
+    console.log(advice);
     let adviceEmbed = new MessageEmbed()
       .setAuthor('Advice')
-      .setColor('#2ab7ca')
-      .setDescription(JSON.parse(body.toString()).slip.advice)
+      .setColor('#E1DBD6 ')
+      .setDescription(ans)
 
       .setTimestamp();
     message.channel.send(adviceEmbed);
@@ -27,6 +31,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ['ad'],
+  aliases: [''],
   cooldown: 0,
 };
