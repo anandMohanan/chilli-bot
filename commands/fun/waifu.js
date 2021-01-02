@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
       .setTitle(':)')
       .setImage(data)
       .setTimestamp();
-    message.channel.send(data);
+    message.channel.send(waifuEmbed);
   } catch (err) {
     console.log(err);
   }
