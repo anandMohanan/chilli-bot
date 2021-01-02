@@ -5,8 +5,8 @@ exports.run = async (client, message, args) => {
   let pingEmbed = new MessageEmbed()
     .setTitle(`**Update**`)
     .setThumbnail(message.guild.iconURL())
-    .setDescription('added fun commands, try `=h`')
-    .setFooter('**Spotify playlist support coming soon**')
+    .setDescription('added new fun commands, try `=h`')
+    .setFooter()
     .setColor('#2ED8BA')
     .setTimestamp();
   message.channel.send(pingEmbed);
