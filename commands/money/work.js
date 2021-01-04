@@ -56,6 +56,6 @@ exports.help = {
 
 exports.conf = {
   aliases: ['job'],
-  cooldown: 5, // This number is a seconds, not a milliseconds.
+  cooldown: 100000, // This number is a seconds, not a milliseconds.
   // 1 = 1 seconds.
 };
