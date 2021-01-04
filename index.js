@@ -6,6 +6,14 @@ const { MessageEmbed } = require('discord.js');
 
 const player = new Player(client);
 
+const db = require('discord-mongoose-economy');
+
+require('dotenv').config();
+
+const mongoDb = process.env.MONGO_URI;
+
+db.connect(mongoDb);
+
 client.player = player;
 
 require('./handler/Module.js')(client);
@@ -26,6 +34,17 @@ client.on('ready', () => {
     client.user.setActivity(status[rstatus], { type: 'WATCHING' });
   }
   setInterval(randomStatus, 100000);
+});
+
+const min = 10; //Minimum of 10
+const max = 50; //Maximum of 100
+const random = Math.floor(Math.random() * (max - min + 1)) + min; //Number Generator, no need to touch as we already have min, max constant above.
+
+client.on('message', async (message) => {
+  //Make sure Event Listener is Asynchrononous
+  if (message.author.bot) return;
+  await db.give(message.author.id, message.guild.id, random); // Make Sure this Code is under Message Event Listener
+  const add = await db.giveCapacity(message.author.id, message.guild.id, 5);
 });
 
 client.player
@@ -172,6 +191,4 @@ client.player
 
 client.on('warn', console.warn); // This will warn you via logs if there was something wrong with your bot.
 client.on('error', console.error); // This will send you an error message via logs if there was something missing with your coding.
-client
-  .login('NzY2MjEwMzU1ODI2NTI0MjEx.X4gDAA.S0vGP3igiFvnb8mqa8-f-zphZw8')
-  .catch(console.error); // This token will leads to the .env file. It's safe in there.
+client.login(process.env.BOT_TOKEN).catch(console.error); // This token will leads to the .env file. It's safe in there.

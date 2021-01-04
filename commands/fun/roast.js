@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     return message.reply('You can not roast yourself');
   if (message.mentions.users.size < 1)
     return message.reply('You must mention someone to compliment them.');
-  var roast = [
+  let roast = [
     'You look like the kind of person who reads the terms and services then presses decline',
     "You're just a hormonal banana",
     'I’d make a joke about you having an extra chromosome, but it might be the first time its actually true.',
