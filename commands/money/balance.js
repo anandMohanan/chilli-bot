@@ -11,7 +11,6 @@ exports.run = async (client, message, args) => {
   } else {
     user = message.author;
   }
-  console.log(user);
 
   let bal = await db.balance(user.id, message.guild.id);
   let balEmbed = new MessageEmbed()

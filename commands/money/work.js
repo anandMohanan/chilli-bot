@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
     .setTitle(message.author.username)
     .setDescription(works)
     .setTimestamp()
-    .setColor('#00FF00');
+    .setColor('RANDOM');
   message.channel.send(workEmbed);
 };
 
