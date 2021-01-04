@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
   let pingEmbed = new MessageEmbed()
     .setTitle(`**Update**`)
     .setThumbnail(message.guild.iconURL())
-    .setDescription('added economy commands , try `=h money`')
+    .setDescription('added economy commands , try `=h`')
     .setFooter()
     .setColor('#2ED8BA')
     .setTimestamp();
