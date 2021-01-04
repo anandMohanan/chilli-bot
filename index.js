@@ -43,8 +43,7 @@ const random = Math.floor(Math.random() * (max - min + 1)) + min; //Number Gener
 client.on('message', async (message) => {
   //Make sure Event Listener is Asynchrononous
   if (message.author.bot) return;
-  await db.give(message.author.id, message.guild.id, random); // Make Sure this Code is under Message Event Listener
-  const add = await db.giveCapacity(message.author.id, message.guild.id, 5);
+  // Make Sure this Code is under Message Event Listener
 });
 
 client.player
