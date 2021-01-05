@@ -15,6 +15,7 @@
     "lyrics-finder": "^21.4.0",
     "mongoose": "^5.11.9",
     "node-fetch": "^2.6.1",
+    "node-superfetch": "^0.1.10",
     "nodemon": "^2.0.6",
     "something-random-on-discord": "^0.0.2",
     "ytdl-core": "^4.1.4"

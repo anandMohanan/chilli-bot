@@ -14,8 +14,8 @@ exports.run = async (client, message, args) => {
 
   let bal = await db.balance(user.id, message.guild.id);
   let balEmbed = new MessageEmbed()
-    .setTitle(message.author.username)
-    .setThumbnail(message.author.displayAvatarURL())
+    .setTitle(user.username)
+    .setThumbnail(user.displayAvatarURL())
     .setDescription(
       `Wallet: ${bal.wallet} \n Bank: ${bal.bank}/${bal.bankCapacity}`
     )

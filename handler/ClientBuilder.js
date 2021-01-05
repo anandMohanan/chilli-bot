@@ -1,6 +1,6 @@
 const { Client, Collection } = require('discord.js');
 
-module.exports = class TutorialBot extends (
+module.exports = class ChilliBot extends (
   Client
 ) {
   constructor(options) {

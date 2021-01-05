@@ -45,7 +45,7 @@ exports.run = async (client, message, args) => {
     .setThumbnail(message.author.displayAvatarURL())
     .setTimestamp()
     .setColor('RANDOM');
-  message.reply();
+  message.reply(dailyEmbed);
   const add = db.giveCapacity(message.author.id, message.guild.id, 200);
 };
 

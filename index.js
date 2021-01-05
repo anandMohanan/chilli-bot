@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const tutorialBot = require('./handler/ClientBuilder.js'); // We're gonna create this soon.
-const client = new tutorialBot();
+const ChilliBot = require('./handler/ClientBuilder.js'); // We're gonna create this soon.
+const client = new ChilliBot();
 const { Player } = require('discord-player');
 const { MessageEmbed } = require('discord.js');
 
