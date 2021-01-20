@@ -45,7 +45,7 @@ exports.run = async (client, message, args) => {
 }
 
   exports.help = {
-    name: 'unbans',
+    name: 'unban',
     description: 'unbans a user',
     usage: 'unban [@userId]',
     example: 'unban 12345678',
