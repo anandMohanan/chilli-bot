@@ -13,8 +13,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'owner',
   description: 'naan dhan da owner punda',
-  usage: '=owner',
-  example: '=owner',
+  usage: 'owner',
+  example: 'owner',
 };
 
 exports.conf = {

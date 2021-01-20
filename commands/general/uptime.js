@@ -23,8 +23,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'uptime',
   description: 'Shows how long the bot was online',
-  usage: '=uptime',
-  example: '=uptime',
+  usage: 'uptime',
+  example: 'uptime',
 };
 
 exports.conf = {

@@ -26,8 +26,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'avatar',
   description: 'Shows avatar of a User',
-  usage: '=avatar [@user]',
-  example: '=avatar @kevin malone',
+  usage: 'avatar [@user]',
+  example: 'avatar @kevin malone',
 };
 
 exports.conf = {

@@ -69,8 +69,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'binary',
   description: 'Convert text to binary or otherwise.',
-  usage: '=binary <encode | decode> <text>',
-  example: '=binary encode javascript development',
+  usage: 'binary <encode | decode> <text>',
+  example: 'binary encode javascript development',
 };
 
 exports.conf = {

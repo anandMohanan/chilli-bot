@@ -15,8 +15,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'update',
   description: 'New features',
-  usage: '=ping',
-  example: '=ping',
+  usage: 'update',
+  example: 'update',
 };
 
 exports.conf = {

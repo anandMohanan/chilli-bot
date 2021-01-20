@@ -12,8 +12,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'ping',
   description: 'Shows how fast the bot is responding',
-  usage: '=ping',
-  example: '=ping',
+  usage: 'ping',
+  example: 'ping',
 };
 
 exports.conf = {

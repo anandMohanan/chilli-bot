@@ -55,8 +55,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'purge',
   description: 'deletes the messages',
-  usage: '=purge',
-  example: '=purge 10',
+  usage: 'purge',
+  example: 'purge 10',
 };
 
 exports.conf = {
