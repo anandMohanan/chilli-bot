@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
                     inline: true
                 }
             )
-            .setFooter(`Created By: ${message.author.tag}`, message.author.displayAvatarURL())
+            .setFooter(`Created By:  Kevin Malone#8142`)
 
         await message.channel.send(embed)
   };
