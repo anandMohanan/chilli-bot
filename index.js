@@ -72,7 +72,9 @@ client.player
       .setDescription(
         `${tracks.map((t, i) => `**${i + 1}** - ${t.title}`).join('\n')}`
       );
-    await message.channel.send(searchEmbed);
+    await message.channel.send(searchEmbed).then((msg) => {
+      msg.delete({ timeout: 10000 });
+    });
   })
   .on('searchInvalidResponse', async(message, query, tracks, content, collector) => {
     await message.channel.send(`\`You must send a valid number between **1** and **${tracks.length}** !\``).then((msg) => {
