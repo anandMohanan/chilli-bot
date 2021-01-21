@@ -3,22 +3,16 @@ const { MessageEmbed } = require('discord.js');
 
 exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
-    let queuenoVoice = new MessageEmbed()
-      .setTitle('You need to join a voice channel first!')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setColor('#2ED8BA')
-      .setTimestamp();
-    return message.channel.send(queuenoVoice);
+    return message.channel.send('`You need to join a voice channel first!`').then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
   const queue = client.player.getQueue(message);
 
   if (!queue) {
-    let queueNo = new MessageEmbed()
-      .setTitle(`No music playing on this server `)
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setColor('#2ED8BA')
-      .setTimestamp();
-    return message.channel.send(queueNo);
+    return message.channel.send('`No music playing on this server `').then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
 
   let queueSet = new MessageEmbed()
@@ -29,9 +23,7 @@ exports.run = async (client, message, args) => {
       `**Server queue - ${message.guild.name} **\nCurrent : ${queue.playing.title} | ${queue.playing.author}\n\n` +
         (queue.tracks
           .map((track, i) => {
-            return `**${i + 1}** - ${track.title} | ${
-              track.author
-            }\n(requested by : ${track.requestedBy.username})`;
+            return `**${i + 1}** - ${track.title} `;
           })
           .slice(0, 5)
           .join('\n') +
@@ -49,8 +41,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'queue',
   description: 'Shows the queue',
-  usage: '=queue',
-  example: '=queue',
+  usage: 'queue',
+  example: 'queue',
 };
 
 exports.conf = {

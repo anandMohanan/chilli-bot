@@ -10,7 +10,9 @@ exports.run = async (client, message, args) => {
       .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setColor('#2ED8BA')
       .setTimestamp();
-    return message.channel.send(filternoVoice);
+    return message.channel.send(filternoVoice).then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
   if (!client.player.getQueue(message)) {
     let filterNo = new MessageEmbed()
@@ -18,7 +20,9 @@ exports.run = async (client, message, args) => {
       .setColor('#2ED8BA')
       .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
-    return message.channel.send(filterNo);
+    return message.channel.send(filterNo).then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
   const filter = args[0];
   if (!filter) {
@@ -28,7 +32,7 @@ exports.run = async (client, message, args) => {
       )
       .setColor('#674AB3 ')
       .setTimestamp();
-    return message.channel.send(filterValid);
+    return message.channel.send(filterValid)
   }
   const filterToUpdate = Object.values(filters).find(
     (f) => f.toLowerCase() === filter.toLowerCase()
@@ -39,7 +43,9 @@ exports.run = async (client, message, args) => {
       .setTitle(`This filter doesn't exist `)
       .setColor('#2ED8BA')
       .setTimestamp();
-    return message.channel.send(filterInValid);
+    return message.channel.send(filterInValid).then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
   const filterRealName = Object.keys(filters).find(
     (f) => filters[f] === filterToUpdate
@@ -57,7 +63,7 @@ exports.run = async (client, message, args) => {
       )
       .setColor('#674AB3 ')
       .setTimestamp();
-    message.channel.send(filterSet);
+    message.channel.send(filterSet)
   } else {
     let filterNoSet = new MessageEmbed()
       .setTitle(
@@ -72,8 +78,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'filter',
   description: 'Shows a list of filters and can choose from the list',
-  usage: '=filter',
-  example: '=filter bassboost',
+  usage: 'filter',
+  example: 'filter bassboost',
 };
 
 exports.conf = {

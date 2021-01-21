@@ -17,8 +17,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'joke',
   description: 'random joke',
-  usage: '=joke',
-  example: '=joke',
+  usage: 'joke',
+  example: 'joke',
 };
 
 exports.conf = {

@@ -5,21 +5,13 @@ const filters = require('../../filters.json');
 
 exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
-    let wfilternoVoice = new MessageEmbed()
-      .setTitle('You need to join a voice channel first!')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setColor('#2ED8BA')
-      .setTimestamp();
-    return message.reply(wfilternoVoice).catch(console.error);
+   
+    return message.reply('`You need to join a voice channel first!`').then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
   if (!client.player.getQueue(message)) {
-    let wfilternoPlay = new MessageEmbed()
-      .setTitle('Nothing playing in this server')
-      .setColor('#2ED8BA')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-
-      .setTimestamp();
-    return message.channel.send(wfilternoPlay).then((msg) => {
+    return message.channel.send('`Nothing playing in this server`').then((msg) => {
       msg.delete({ timeout: 10000 });
     });
   }
@@ -54,8 +46,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'filter settings',
   description: 'Shows whether a filter is **on** or **off**',
-  usage: '=filtersettings',
-  example: '=filtersettings',
+  usage: 'filtersettings',
+  example: 'filtersettings',
 };
 
 exports.conf = {

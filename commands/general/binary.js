@@ -2,45 +2,23 @@ const Discord = require('discord.js');
 
 exports.run = async (client, message, args) => {
   if (!args[0]) {
-    let binaryNoArg = new MessageEmbed()
-      .setImage(
-        'Unknown parameter. Please choose the method first, either decode or encode it.'
-      )
-      .setColor('#2ED8BA')
-      .setTimestamp();
-    return message.channel.send(binaryNoArg);
+    return message.channel.send( '`Unknown parameter. Please choose the method first, either decode or encode it.`');
   }
   let choice = ['encode', 'decode'];
   if (!choice.includes(args[0].toLowerCase())) {
-    let binaryNoChoice = new MessageEmbed()
-      .setImage(
-        'Unknown parameter. Please choose the method first, either decode or encode it.'
-      )
-      .setColor('#2ED8BA')
-      .setTimestamp();
-    return message.channel.send(binaryNoChoice);
+    return message.channel.send( '`Unknown parameter. Please choose the method first, either decode or encode it.`');
   }
   let text = args.slice(1).join(' ');
   // binary <encode | decode> <text>
   // binary encode blob development
 
   if (!text) {
-    let binaryNoInput = new MessageEmbed()
-      .setImage(
-        'Unknown parameter. Please choose the method first, either decode or encode it.'
-      )
-      .setColor('#2ED8BA')
-      .setTimestamp();
-    return message.channel.send(binaryNoInput);
+    return message.channel.send('`Unknown parameter. Please choose the method first, either decode or encode it.`');
   }
 
   // Do this because more than that, the binary code wouldn't be fit anymore.
   if (text.length > 1024) {
-    let binaryLargeInput = new MessageEmbed()
-      .setImage('That is way too much. The maximum character was 1,024.')
-      .setColor('#2ED8BA')
-      .setTimestamp();
-    return message.channel.send(binaryLargeInput);
+    return message.channel.send('`That is way too much. The maximum character was 1,024.`');
   }
   function encode(char) {
     return char

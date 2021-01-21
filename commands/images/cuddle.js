@@ -19,8 +19,8 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: 'cuddle',
   description: 'cuddles the mentioned user',
-  usage: '=cuddle [@user]',
-  example: '=cuddle @kevin malone',
+  usage: 'cuddle [@user]',
+  example: 'cuddle @kevin malone',
 };
 
 exports.conf = {

@@ -1,12 +1,8 @@
 const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
+
 
 exports.run = async (client, message, args) => {
-  let pingEmbed = new MessageEmbed()
-    .setTitle(`Pong! This message had a latency of ${client.ws.ping}ms.`)
-    .setColor('#2ED8BA')
-    .setTimestamp();
-  message.channel.send(pingEmbed);
+  message.channel.send(`\`Pong! This message had a latency of ${client.ws.ping}ms.\``);
 };
 
 exports.help = {

@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
   let lyricsEmbed = new MessageEmbed()
     .setAuthor(`${songName} — Lyrics`)
     .setColor('YELLOW')
-    .setDescription(lyrics)
+    .setDescription(`\`${lyrics}\``)
     
     .setTimestamp();
 
@@ -26,8 +26,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'lyrics',
   description: 'lyrics of the given song',
-  usage: '=lyrics',
-  example: '=lyrics golden',
+  usage: 'lyrics',
+  example: 'lyrics golden',
 };
 
 exports.conf = {

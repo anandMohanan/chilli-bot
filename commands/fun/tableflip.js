@@ -18,8 +18,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'table',
   description: 'tbbb',
-  usage: '=avatar [@user]',
-  example: '=avatar @kevin malone',
+  usage: '=table ',
+  example: '=table',
 };
 
 exports.conf = {

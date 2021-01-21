@@ -5,7 +5,6 @@ const { Player } = require('discord-player');
 const { MessageEmbed } = require('discord.js');
 
 const player = new Player(client);
-
 const db = require('discord-mongoose-economy');
 
 require('dotenv').config();
@@ -24,14 +23,12 @@ client.package = require('./package.json');
 client.on('ready', () => {
   function randomStatus() {
     let status = [
-      'listening to freak penne',
-      'serving ussr',
-      'starving people',
-      'Kevins world famous chilli',
-      'watching bot porn',
+      `Serving ${client.channels.cache.size} channels.`,
+      `Serving ${client.guilds.cache.size} servers.`,
+
     ];
     let rstatus = Math.floor(Math.random() * status.length);
-    client.user.setActivity(status[rstatus], { type: 'WATCHING' });
+    client.user.setActivity(status[rstatus], { type: 'CUSTOM_STATUS' });
   }
   setInterval(randomStatus, 100000);
 });
@@ -47,144 +44,93 @@ client.on('message', async (message) => {
 });
 
 client.player
-  .on('trackStart', (message, track) => {
-    let trackStart = new MessageEmbed()
-      .setAuthor(`Now playing ${track.title} `)
-      .setThumbnail(track.thumbnail)
-      .setTimestamp()
-      .setFooter(`Requested by: ${track.requestedBy.username}`)
-      .setColor('#556DC8 ');
-    message.channel.send(trackStart);
+  .on('trackStart', async (message, track) => {
+    await message.channel.send(`\`Now playing ${track.title}\` `);
   })
 
   // Send a message when something is added to the queue
-  .on('trackAdd', (message, track) => {
+  .on('trackAdd', async (message, track) => {
     console.log(track);
-    let trackAdd = new MessageEmbed()
-      .setAuthor(`Added to the queue !`)
-      .setThumbnail('https://media.giphy.com/media/JxxkWxHOEDrq0/giphy.gif')
-      .setTimestamp()
-
-      .setColor('#DD517F ');
-    message.channel.send(trackAdd);
+    await message.channel.send('`Added to the queue !`').then((msg) => {
+      msg.delete({ timeout: 10000 });
+    });
   })
-  .on('playlistAdd', (message, playlist) => {
+  .on('playlistAdd', async (message, playlist) => {
     let playAdd = new MessageEmbed()
       .setTitle(`${playlist.title} has been added to the queue`)
-      .setThumbnail(
-        'https://media.giphy.com/media/xT9DPEPymVhAwi0mJy/giphy.gif'
-      )
       .setColor('#461E52 ')
       .setTimestamp();
-    message.channel.send(playAdd);
+    await message.channel.send(playAdd);
   })
 
   // Send messages to format search results
-  .on('searchResults', (message, query, tracks) => {
+  .on('searchResults', async (message, query, tracks) => {
     let searchEmbed = new MessageEmbed()
       .setAuthor(`Here are your search results for ${query}`)
-      .setThumbnail('https://media.giphy.com/media/xGdvlOVSWaDvi/giphy.gif')
       .setTimestamp()
       .setColor('#7998EE')
       .setDescription(
         `${tracks.map((t, i) => `**${i + 1}** - ${t.title}`).join('\n')}`
       );
-    message.channel.send(searchEmbed);
+    await message.channel.send(searchEmbed);
   })
-  .on('searchInvalidResponse', (message, query, tracks, content, collector) => {
-    let searchInvalidCancel = new MessageEmbed()
-      .setTitle(
-        `You must send a valid number between **1** and **${tracks.length}** !`
-      )
-      .setColor('#E68E36 ')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setTimestamp();
-    message.channel.send(searchInvalidCancel);
+  .on('searchInvalidResponse', async(message, query, tracks, content, collector) => {
+    await message.channel.send(`\`You must send a valid number between **1** and **${tracks.length}** !\``).then((msg) => {
+      msg.delete({ timeout: 5000 });
+    });
   })
-  .on('searchCancel', (message, query, tracks) => {
-    let searchCancel = new MessageEmbed()
-      .setTitle(
-        `You did not provide a valid response ... Please send the command again !`
-      )
-      .setColor('#66545e')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setTimestamp();
-    message.channel.send(searchCancel);
+  .on('searchCancel', async(message, query, tracks) => {
+    
+   await message.channel.send('`\`You did not provide a valid response ... Please send the command again !\``'
+    ).then((msg) => {
+      msg.delete({ timeout: 10000 });
+    });
   })
 
-  .on('noResults', (message, query) => {
+  .on('noResults', async(message, query) => {
     let noSearch = new MessageEmbed()
       .setTitle(`No results found on YouTube for ${query} !`)
       .setColor('#66545e')
       .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
       .setTimestamp();
-    message.channel.send(noSearch);
+    await message.channel.send(noSearch);
   })
 
   // Send a message when the music is stopped
-  .on('queueEnd', (message, queue) => {
-    let queueEnd = new MessageEmbed()
-      .setTitle(`Music stopped as there is no more music in the queue !`)
-      .setColor('#7998EE')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setTimestamp();
-    message.channel.send(queueEnd);
+  .on('channelEmpty', async(message, queue) => {
+    await message.channel.send( '` Music stopped as there is no more member in the voice channel !`').then((msg) => {
+      msg.delete({ timeout: 10000 });
+    });
   })
-  .on('channelEmpty', (message, queue) => {
-    let filternoMember = new MessageEmbed()
-      .setTitle(
-        ` Music stopped as there is no more member in the voice channel !`
-      )
-      .setColor('#461E52 ')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setTimestamp();
-    message.channel.send(filternoMember);
-  })
-  .on('botDisconnect', (message, queue) => {
-    let musicStop = new MessageEmbed()
-      .setTitle(`Music stopped as i have been disconnected from the channel !`)
-      .setColor('#CA7CD8  ')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setTimestamp();
-    message.channel.send(musicStop);
+  .on('botDisconnect', async (message, queue) => {
+    await message.channel.send('`Music stopped as i have been disconnected from the channel !`').then((msg) => {
+      msg.delete({ timeout: 10000 });
+    });
   })
 
   // Error handling
-  .on('error', (error, message) => {
+  .on('error',async (error, message) => {
     switch (error) {
       case 'NotPlaying':
-        let errorNo = new MessageEmbed()
-          .setTitle(`There is no music being played on this server !`)
-          .setColor('#2ED8BA')
-          .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-          .setTimestamp();
-        message.channel.send(errorNo);
+        
+        await message.channel.send('`There is no music being played on this server !`').then((msg) => {
+          msg.delete({ timeout: 10000 });
+        });
         break;
       case 'NotConnected':
-        let errorNoConnect = new MessageEmbed()
-          .setTitle(`Not connected in any voice channel !`)
-          .setColor('#2ED8BA')
-          .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-          .setTimestamp();
-        message.channel.send(errorNoConnect);
+        await message.channel.send('`Not connected in any voice channel !`').then((msg) => {
+          msg.delete({ timeout: 5000 });
+        });
         break;
       case 'UnableToJoin':
-        let errorNoPerms = new MessageEmbed()
-          .setTitle(
-            `I am not able to join your voice channel, please check my permissions !`
-          )
-          .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-          .setColor('#2ED8BA')
-          .setTimestamp();
-        message.channel.send(errorNoPerms);
+        await message.channel.send( '`I am not able to join your voice channel, please check my permissions !`').then((msg) => {
+          msg.delete({ timeout: 5000 });
+        });
         break;
       default:
-        let errorDefault = new MessageEmbed()
-          .setTitle(`Something went wrong ... Error : ${error}`)
-          .setColor('#2ED8BA')
-          .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-          .setTimestamp();
-        message.channel.send(errorDefault);
+        await message.channel.send(`Something went wrong ... Error : ${error}`).then((msg) => {
+          msg.delete({ timeout: 5000 });
+        });
     }
   });
 

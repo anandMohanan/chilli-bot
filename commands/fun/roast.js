@@ -29,21 +29,14 @@ exports.run = async (client, message, args) => {
     "It's like you were drawn by an eight year old.",
   ];
   const roasts = roast[Math.floor(Math.random() * roast.length)];
-  const embed = new Discord.MessageEmbed()
-    .setDescription(user.username + ', ' + roasts)
-    .setFooter(
-      message.member.displayName,
-      message.author.displayAvatarURL({ dynamic: true })
-    )
-    .setColor('#851e3e');
-  message.channel.send({ embed });
+  message.channel.send( user.username + ', ' + roasts);
 };
 
 exports.help = {
   name: 'roast',
   description: 'roasts the mentioned user',
-  usage: '=roast [@user]',
-  example: '=roast @kevin malone',
+  usage: 'roast [@user]',
+  example: 'roast @kevin malone',
 };
 
 exports.conf = {

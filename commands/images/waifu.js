@@ -18,8 +18,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'waifu',
   description: 'random waifu image',
-  usage: '=waifu',
-  example: '=waifu',
+  usage: 'waifu',
+  example: 'waifu',
 };
 
 exports.conf = {

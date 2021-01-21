@@ -10,14 +10,7 @@ exports.run = async (client, message, args) => {
   seconds %= 60;
   minutes %= 60;
   hours %= 24;
-
-  let uptime = new MessageEmbed()
-    .setTitle(
-      ` Uptime: \`${days} day(s),${hours} hours, ${minutes} minutes, ${seconds} seconds\``
-    )
-    .setColor('#2ED8BA')
-    .setTimestamp();
-  return message.reply(uptime).catch(console.error);
+  return message.reply(` Uptime: \`${days} day(s),${hours} hours, ${minutes} minutes, ${seconds} seconds\``).catch(console.error);
 };
 
 exports.help = {

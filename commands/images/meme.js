@@ -30,8 +30,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'meme',
   description: 'memes',
-  usage: '=meme',
-  example: '=meme',
+  usage: 'meme',
+  example: 'meme',
 };
 
 exports.conf = {

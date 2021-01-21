@@ -23,8 +23,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'pat',
   description: 'pats the mentioned user',
-  usage: '=pat [@user]',
-  example: '=pat @kevin malone',
+  usage: 'pat [@user]',
+  example: 'pat @kevin malone',
 };
 
 exports.conf = {

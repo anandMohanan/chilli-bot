@@ -3,54 +3,31 @@ const { MessageEmbed } = require('discord.js');
 
 exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
-    let loopnoVoice = new MessageEmbed()
-      .setTitle('You need to join a voice channel first!')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setColor('#2ED8BA')
-      .setTimestamp();
-    return message.channel.send(loopnoVoice);
+    return message.channel.send('`You need to join a voice channel first!`').then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
   if (!client.player.getQueue(message)) {
-    let loopNo = new MessageEmbed()
-      .setTitle(`No music playing on this server `)
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setColor('#2ED8BA')
-      .setFooter(
-        message.member.displayName,
-        message.author.displayAvatarURL({ dynamic: true })
-      )
-      .setTimestamp();
-    return message.channel.send(loopNo);
+    
+    return message.channel.send('`No music playing on this server `').then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
   const repeatMode = client.player.getQueue(message).repeatMode;
 
   if (repeatMode) {
     client.player.setRepeatMode(message, false);
-    let loopDisabled = new MessageEmbed()
-      .setTitle(`Repeat mode **disabled** `)
-      .setColor('#2ED8BA')
-      .setFooter(
-        message.member.displayName,
-        message.author.displayAvatarURL({ dynamic: true })
-      )
-      .setTimestamp();
-    return message.channel.send(loopDisabled);
+    return message.channel.send('`Repeat mode **disabled** `');
   } else {
     client.player.setRepeatMode(message, true);
-    let loopEnabled = new MessageEmbed()
-      .setTitle(`Repeat mode **enabled** `)
-      .setColor('#65B8BF ')
-
-      .setThumbnail('https://media.giphy.com/media/rh0W2vpayXMac/giphy.gif')
-      .setTimestamp();
-    return message.channel.send(loopEnabled);
+    return message.channel.send('`Repeat mode **enabled** `');
   }
 };
 exports.help = {
   name: 'repeat',
   description: 'Loops through the currently playing song',
-  usage: '=repeat',
-  example: '=repeat',
+  usage: 'repeat',
+  example: 'repeat',
 };
 
 exports.conf = {

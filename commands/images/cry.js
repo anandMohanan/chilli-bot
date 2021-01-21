@@ -13,8 +13,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'cry',
   description: 'cry AAAAAA',
-  usage: '=cry',
-  example: '=cry',
+  usage: 'cry',
+  example: 'cry',
 };
 
 exports.conf = {

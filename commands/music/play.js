@@ -3,21 +3,15 @@ const { MessageEmbed } = require('discord.js');
 
 exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
-    let playnoVoice = new MessageEmbed()
-      .setTitle('You need to join a voice channel first!')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setColor('#2ED8BA')
-      .setTimestamp();
-    return message.channel.send(playnoVoice);
+    
+    return message.channel.send('`You need to join a voice channel first!`').then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
   if (!args[0]) {
-    let playUsage = new MessageEmbed()
-      .setTitle(`Usage: =play <YouTube URL | Video Name >`)
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setColor('#2ED8BA')
-
-      .setTimestamp();
-    return message.channel.send(playUsage);
+    return message.channel.send('`Usage: =play <YouTube URL | Video Name >`').then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
   client.player.play(message, args.join(' '));
 };
@@ -25,8 +19,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: 'play',
   description: 'Plays the given song',
-  usage: '=play [song name]',
-  example: '=play golden',
+  usage: 'play [song name]',
+  example: 'play golden',
 };
 
 exports.conf = {

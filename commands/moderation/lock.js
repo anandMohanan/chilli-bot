@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
                 channel.setName(channel.name += `🔒`)
             })
         })
-        return message.channel.send('locked all channels');
+        return message.channel.send('`locked all channels`');
     } else if (args[0] === 'off') {
         channels.forEach(channel => {
             channel.updateOverwrite(message.guild.roles.everyone, {
@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
                 }
             )
         })
-        return message.channel.send('unlocked all channels')
+        return message.channel.send('`unlocked all channels`')
     }
 }
 
