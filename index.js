@@ -23,12 +23,12 @@ client.package = require('./package.json');
 client.on('ready', () => {
   function randomStatus() {
     let status = [
-      `Serving ${client.channels.cache.size} channels.`,
-      `Serving ${client.guilds.cache.size} servers.`,
+      `${client.channels.cache.size} channels.`,
+      `${client.guilds.cache.size} servers.`,
 
     ];
     let rstatus = Math.floor(Math.random() * status.length);
-    client.user.setActivity(status[rstatus], { type: 'CUSTOM_STATUS' });
+    client.user.setActivity(status[rstatus], { type: 'LISTENING' });
   }
   setInterval(randomStatus, 100000);
 });
