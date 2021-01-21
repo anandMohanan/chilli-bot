@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
   }
   client.player.setRepeatMode(message, false);
   client.player.stop(message);
-  message.channel.send(message.author.tag + '` stopped the music!`');
+  message.channel.send(`\`${message.author.tag}  stopped the music!\``);
 };
 
 exports.help = {
