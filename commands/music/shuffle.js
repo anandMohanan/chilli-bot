@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     });
   }
   client.player.shuffle(message);
-  
+
   return message.channel.send( `\`${message.author.tag} shuffled the queue.\nQueue shuffled **${
     client.player.getQueue(message).tracks.length
   }** song(s) \``);
