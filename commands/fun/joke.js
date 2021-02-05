@@ -1,27 +1,29 @@
-const Discord = require('discord.js');
-const fetch = require('node-fetch');
-const { MessageEmbed } = require('discord.js');
-const { Random } = require('something-random-on-discord');
+const Discord = require("discord.js");
+const fetch = require("node-fetch");
+const { MessageEmbed } = require("discord.js");
+const { Random } = require("something-random-on-discord");
 const random = new Random();
 
 exports.run = async (client, message, args) => {
   try {
-    let data = await random.getJoke();
+    let data = await fetch("https://icanhazdadjoke.com/slack");
 
-    message.channel.send(data);
+    let joke = await data.json();
+    let jokes = joke.attachments[0].text;
+    message.channel.send(jokes);
   } catch (err) {
     console.log(err);
   }
 };
 
 exports.help = {
-  name: 'joke',
-  description: 'random joke',
-  usage: 'joke',
-  example: 'joke',
+  name: "joke",
+  description: "random joke",
+  usage: "joke",
+  example: "joke",
 };
 
 exports.conf = {
-  aliases: ['j'],
+  aliases: ["j"],
   cooldown: 0,
 };

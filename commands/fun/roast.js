@@ -24,6 +24,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["r"],
+  aliases: ["insult"],
   cooldown: 0,
 };
