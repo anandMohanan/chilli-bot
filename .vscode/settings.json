@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/6ba20515-431a-4726-98b4-b80d6c85c73e/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/chilli-bot",
+    "appService.deploySubpath": "."
+}
