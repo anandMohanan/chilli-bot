@@ -36,8 +36,8 @@ client.on("ready", () => {
   setInterval(randomStatus, 100000);
 });
 
-const min = 10; //Minimum of 10
-const max = 50; //Maximum of 100
+    const min = 10; //Minimum of 10
+   const max = 50; //Maximum of 100
 const random = Math.floor(Math.random() * (max - min + 1)) + min; //Number Generator, no need to touch as we already have min, max constant above.
 
 client.on("message", async (message) => {
