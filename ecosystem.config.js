@@ -5,7 +5,7 @@ module.exports = {
     {
       name: "chilli-bot",
       script: "./index.js",
-      instances: "8",
+      instances: "1",
       exec_mode: "cluster",
     },
   ],
