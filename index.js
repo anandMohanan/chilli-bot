@@ -1,13 +1,15 @@
+/** @format */
+
 const Discord = require("discord.js");
 const ChilliBot = require("./handler/ClientBuilder.js"); // We're gonna create this soon.
 const client = new ChilliBot();
 const { Player } = require("discord-player");
 const { MessageEmbed } = require("discord.js");
-const http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World!');
-}).listen(3000);
+//const http = require('http');
+// http.createServer(function (req, res) {
+//   res.writeHead(200, {'Content-Type': 'text/plain'});
+//   res.end('Hello World!');
+// }).listen(3000);
 const player = new Player(client);
 const db = require("discord-mongoose-economy");
 
@@ -36,8 +38,8 @@ client.on("ready", () => {
   setInterval(randomStatus, 100000);
 });
 
-    const min = 10; //Minimum of 10
-   const max = 50; //Maximum of 100
+const min = 10; //Minimum of 10
+const max = 50; //Maximum of 100
 const random = Math.floor(Math.random() * (max - min + 1)) + min; //Number Generator, no need to touch as we already have min, max constant above.
 
 client.on("message", async (message) => {
@@ -73,7 +75,7 @@ client.player
       .setTimestamp()
       .setColor("#7998EE")
       .setDescription(
-        `${tracks.map((t, i) => `**${i + 1}** - ${t.title}`).join("\n")}`,
+        `${tracks.map((t, i) => `**${i + 1}** - ${t.title}`).join("\n")}`
       );
     await message.channel.send(searchEmbed).then((msg) => {
       msg.delete({ timeout: 10000 });
@@ -84,17 +86,17 @@ client.player
     async (message, query, tracks, content, collector) => {
       await message.channel
         .send(
-          `\`You must send a valid number between **1** and **${tracks.length}** !\``,
+          `\`You must send a valid number between **1** and **${tracks.length}** !\``
         )
         .then((msg) => {
           msg.delete({ timeout: 5000 });
         });
-    },
+    }
   )
   .on("searchCancel", async (message, query, tracks) => {
     await message.channel
       .send(
-        "``You did not provide a valid response ... Please send the command again !``",
+        "``You did not provide a valid response ... Please send the command again !``"
       )
       .then((msg) => {
         msg.delete({ timeout: 10000 });
@@ -114,7 +116,7 @@ client.player
   .on("channelEmpty", async (message, queue) => {
     await message.channel
       .send(
-        "` Music stopped as there is no more member in the voice channel !`",
+        "` Music stopped as there is no more member in the voice channel !`"
       )
       .then((msg) => {
         msg.delete({ timeout: 10000 });
@@ -148,7 +150,7 @@ client.player
       case "UnableToJoin":
         await message.channel
           .send(
-            "`I am not able to join your voice channel, please check my permissions !`",
+            "`I am not able to join your voice channel, please check my permissions !`"
           )
           .then((msg) => {
             msg.delete({ timeout: 5000 });
