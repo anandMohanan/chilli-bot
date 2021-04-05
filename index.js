@@ -5,11 +5,13 @@ const ChilliBot = require("./handler/ClientBuilder.js"); // We're gonna create t
 const client = new ChilliBot();
 const { Player } = require("discord-player");
 const { MessageEmbed } = require("discord.js");
-//const http = require('http');
-// http.createServer(function (req, res) {
-//   res.writeHead(200, {'Content-Type': 'text/plain'});
-//   res.end('Hello World!');
-// }).listen(3000);
+const http = require("http");
+http
+  .createServer(function (req, res) {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello World!");
+  })
+  .listen(process.env.PORT || 5000);
 const player = new Player(client);
 const db = require("discord-mongoose-economy");
 
