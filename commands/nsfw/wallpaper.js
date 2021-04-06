@@ -4,10 +4,15 @@ const NSFW = require("discord-nsfw");
 
 exports.run = async (client, message, args) => {
   const nsfw = new NSFW();
-
-  const image = await nsfw.wallpaper();
-  const embed = new Discord.MessageEmbed().setColor("#FF1493").setImage(image);
-  message.channel.send(embed);
+  if (message.channel.nsfw) {
+    const image = await nsfw.wallpaper();
+    const embed = new Discord.MessageEmbed()
+      .setColor("#FF1493")
+      .setImage(image);
+    message.channel.send(embed);
+  } else {
+    message.channel.send("This channel is SFW.");
+  }
 };
 
 exports.help = {
