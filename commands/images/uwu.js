@@ -9,6 +9,7 @@ exports.run = async (client, message, args) => {
         msg.delete({ timeout: 10000 });
       });
     let user = message.mentions.users.first();
+
     let img2 = user.displayAvatarURL({ dynamic: false, format: "png" });
 
     let img1 = message.author.displayAvatarURL({
@@ -28,9 +29,9 @@ exports.run = async (client, message, args) => {
 };
 exports.help = {
   name: "uwu",
-  description: "slaps the mentioned user",
-  usage: "slap [@user]",
-  example: "slpa @kevin malone",
+  description: "uwu the mentioned user",
+  usage: "uwu [@user]",
+  example: "uwu @kevin malone",
 };
 
 exports.conf = {
