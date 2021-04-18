@@ -3,12 +3,12 @@
 const Discord = require("discord.js");
 const ChilliBot = require("./handler/ClientBuilder.js"); // We're gonna create this soon.
 const client = new ChilliBot();
-const { Player } = require("discord-player");
-const { MessageEmbed } = require("discord.js");
+const {Player} = require("discord-player");
+const {MessageEmbed} = require("discord.js");
 const http = require("http");
 http
   .createServer(function (req, res) {
-    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.writeHead(200, {"Content-Type": "text/plain"});
     res.end("Hello World!");
   })
   .listen(process.env.PORT || 5000);
@@ -35,10 +35,25 @@ client.on("ready", () => {
       `${client.guilds.cache.size} servers.`,
     ];
     let rstatus = Math.floor(Math.random() * status.length);
-    client.user.setActivity(status[rstatus], { type: "LISTENING" });
+    client.user.setActivity(status[rstatus], {type: "LISTENING"});
   }
   setInterval(randomStatus, 100000);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const min = 10; //Minimum of 10
 const max = 50; //Maximum of 100
@@ -59,7 +74,7 @@ client.player
   .on("trackAdd", async (message, track) => {
     console.log(track);
     await message.channel.send("`Added to the queue !`").then((msg) => {
-      msg.delete({ timeout: 10000 });
+      msg.delete({timeout: 10000});
     });
   })
   .on("playlistAdd", async (message, playlist) => {
@@ -80,7 +95,7 @@ client.player
         `${tracks.map((t, i) => `**${i + 1}** - ${t.title}`).join("\n")}`
       );
     await message.channel.send(searchEmbed).then((msg) => {
-      msg.delete({ timeout: 10000 });
+      msg.delete({timeout: 10000});
     });
   })
   .on(
@@ -91,7 +106,7 @@ client.player
           `\`You must send a valid number between **1** and **${tracks.length}** !\``
         )
         .then((msg) => {
-          msg.delete({ timeout: 5000 });
+          msg.delete({timeout: 5000});
         });
     }
   )
@@ -101,7 +116,7 @@ client.player
         "``You did not provide a valid response ... Please send the command again !``"
       )
       .then((msg) => {
-        msg.delete({ timeout: 10000 });
+        msg.delete({timeout: 10000});
       });
   })
 
@@ -121,14 +136,14 @@ client.player
         "` Music stopped as there is no more member in the voice channel !`"
       )
       .then((msg) => {
-        msg.delete({ timeout: 10000 });
+        msg.delete({timeout: 10000});
       });
   })
   .on("botDisconnect", async (message, queue) => {
     await message.channel
       .send("`Music stopped as i have been disconnected from the channel !`")
       .then((msg) => {
-        msg.delete({ timeout: 10000 });
+        msg.delete({timeout: 10000});
       });
   })
 
@@ -139,14 +154,14 @@ client.player
         await message.channel
           .send("`There is no music being played on this server !`")
           .then((msg) => {
-            msg.delete({ timeout: 10000 });
+            msg.delete({timeout: 10000});
           });
         break;
       case "NotConnected":
         await message.channel
           .send("`Not connected in any voice channel !`")
           .then((msg) => {
-            msg.delete({ timeout: 5000 });
+            msg.delete({timeout: 5000});
           });
         break;
       case "UnableToJoin":
@@ -155,14 +170,14 @@ client.player
             "`I am not able to join your voice channel, please check my permissions !`"
           )
           .then((msg) => {
-            msg.delete({ timeout: 5000 });
+            msg.delete({timeout: 5000});
           });
         break;
       default:
         await message.channel
           .send(`Something went wrong ... Error : ${error}`)
           .then((msg) => {
-            msg.delete({ timeout: 5000 });
+            msg.delete({timeout: 5000});
           });
     }
   });

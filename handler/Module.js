@@ -1,5 +1,6 @@
-const Discord = require('discord.js'),
-  fs = require('fs');
+const Discord = require("discord.js"),
+  fs = require("fs");
+const { log } = require("util");
 
 // Please be careful, this code will makes you confusing and it will risks an error if you don't try to focus it.
 
@@ -8,7 +9,7 @@ module.exports = (client) => {
   client.aliases = new Discord.Collection();
   client.helps = new Discord.Collection();
 
-  fs.readdir('./commands/', (err, categories) => {
+  fs.readdir("./commands/", (err, categories) => {
     if (err) console.log(err); // it will send you an error, if there was something went wrong.
     // console.log(`Found total ${categories.length} categories.`);
 
@@ -28,12 +29,13 @@ module.exports = (client) => {
         let commands = new Array();
 
         files.forEach((file) => {
-          if (!file.endsWith('.js')) return; // If the file wasn't ended with .js, ignore it.
+          if (!file.endsWith(".js")) return; // If the file wasn't ended with .js, ignore it.
           let prop = require(`../commands/${category}/${file}`);
-          let cmdName = file.split('.')[0];
+          let cmdName = file.split(".")[0];
 
           client.commands.set(prop.help.name, prop);
 
+          console.log(prop.help.name);
           prop.conf.aliases.forEach((alias) => {
             client.aliases.set(alias, prop.help.name);
           });
