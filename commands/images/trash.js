@@ -26,6 +26,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["trash"],
+  aliases: [""],
   cooldown: 0,
 };
