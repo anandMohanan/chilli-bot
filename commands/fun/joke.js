@@ -10,7 +10,10 @@ exports.run = async (client, message, args) => {
 
     let joke = await data.json();
     let jokes = joke.attachments[0].text;
-    message.channel.send(jokes);
+    let jokeEmbed = new MessageEmbed()
+      .setColor("#ff0000")
+      .setDescription(jokes);
+    await message.channel.send(jokeEmbed);
   } catch (err) {
     console.log(err);
   }

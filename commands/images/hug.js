@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
-const { Random } = require('something-random-on-discord');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
+const { Random } = require("something-random-on-discord");
 const random = new Random();
 
 exports.run = async (client, message, args) => {
@@ -10,25 +10,25 @@ exports.run = async (client, message, args) => {
         msg.delete({ timeout: 10000 });
       });
     let user = message.mentions.users.first();
-    let data = await random.getAnimeImgURL('hug');
+    let data = await random.getAnimeImgURL("hug");
     const hugEmb = new MessageEmbed()
       .setTitle(
         `${user.username}, You got a hug from ${message.author.username} ❤`
       )
       .setImage(data)
-      .setColor('#dfa290')
+      .setColor("#ff0000")
       .setTimestamp();
     message.channel.send(hugEmb);
   } catch (err) {}
 };
 exports.help = {
-  name: 'hug',
-  description: 'hugs the mentioned user',
-  usage: 'hug [@user]',
-  example: 'hug @kevin malone',
+  name: "hug",
+  description: "hugs the mentioned user",
+  usage: "hug [@user]",
+  example: "hug @kevin malone",
 };
 
 exports.conf = {
-  aliases: [''],
+  aliases: [""],
   cooldown: 0,
 };

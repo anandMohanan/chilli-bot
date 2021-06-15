@@ -20,8 +20,8 @@ exports.run = async (client, message, args) => {
     message.channel.send(jakfh);
     message.channel.send(jhjhg);
     let image = await new DIG.Blink().getImage(img1, img2);
-    let attach = new Discord.MessageAttachment(image, "blink.gif");
-    message.channel.send(attach);
+    let adembed = new MessageEmbed().setImage(attach).setColor("#ff0000");
+    return await message.channel.send(adembed);
   } catch (err) {
     console.log(err);
   }

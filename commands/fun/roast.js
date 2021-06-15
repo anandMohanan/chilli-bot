@@ -9,11 +9,13 @@ exports.run = async (client, message, args) => {
     return message.reply("You must mention someone to roast them.");
 
   let body = await fetch(
-    "https://evilinsult.com/generate_insult.php?lang=en&type=json",
+    "https://evilinsult.com/generate_insult.php?lang=en&type=json"
   );
   let roast = await body.json();
-
-  message.channel.send(user.username + ", " + roast.insult);
+  let roastEmbed = new Discord.MessageEmbed()
+    .setColor("#ff0000")
+    .setDescription(user.username + ", " + roast.insult);
+  await message.channel.send(roastEmbed);
 };
 
 exports.help = {

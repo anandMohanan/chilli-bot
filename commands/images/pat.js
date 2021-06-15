@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
-const { Random } = require('something-random-on-discord');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
+const { Random } = require("something-random-on-discord");
 const random = new Random();
 
 exports.run = async (client, message, args) => {
@@ -11,23 +11,23 @@ exports.run = async (client, message, args) => {
       });
     let user = message.mentions.users.first();
     console.log(user.username);
-    let data = await random.getAnimeImgURL('pat');
+    let data = await random.getAnimeImgURL("pat");
     const patEmb = new MessageEmbed()
       .setTitle(`${message.author.username} patted ${user.username} ❤`)
       .setImage(data)
-      .setColor('#E2BAB1')
+      .setColor("#ff0000")
       .setTimestamp();
     message.channel.send(patEmb);
   } catch (err) {}
 };
 exports.help = {
-  name: 'pat',
-  description: 'pats the mentioned user',
-  usage: 'pat [@user]',
-  example: 'pat @kevin malone',
+  name: "pat",
+  description: "pats the mentioned user",
+  usage: "pat [@user]",
+  example: "pat @kevin malone",
 };
 
 exports.conf = {
-  aliases: [''],
+  aliases: [""],
   cooldown: 0,
 };

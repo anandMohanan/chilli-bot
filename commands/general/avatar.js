@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 exports.run = async (client, message, args) => {
   let user;
@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
   let avatar = user.displayAvatarURL({ size: 4096, dynamic: true });
   let avatarEmbed = new MessageEmbed()
     .setImage(avatar)
-    .setColor('#2ED8BA')
+    .setColor("#ff0000")
     .setFooter(
       message.member.displayName,
       message.author.displayAvatarURL({ dynamic: true })
@@ -24,13 +24,13 @@ exports.run = async (client, message, args) => {
 };
 
 exports.help = {
-  name: 'avatar',
-  description: 'Shows avatar of a User',
-  usage: 'avatar [@user]',
-  example: 'avatar @kevin malone',
+  name: "avatar",
+  description: "Shows avatar of a User",
+  usage: "avatar [@user]",
+  example: "avatar @kevin malone",
 };
 
 exports.conf = {
-  aliases: ['icon'],
+  aliases: ["icon"],
   cooldown: 0,
 };

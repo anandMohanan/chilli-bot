@@ -1,18 +1,22 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
-    return message.channel.send('`You need to join a voice channel first!`').then((msg) => {
-      msg.delete({ timeout: 8000 });
-    });
+    return message.channel
+      .send("`You need to join a voice channel first!`")
+      .then((msg) => {
+        msg.delete({ timeout: 8000 });
+      });
   }
   const queue = client.player.getQueue(message);
 
   if (!queue) {
-    return message.channel.send('`No music playing on this server `').then((msg) => {
-      msg.delete({ timeout: 8000 });
-    });
+    return message.channel
+      .send("`No music playing on this server `")
+      .then((msg) => {
+        msg.delete({ timeout: 8000 });
+      });
   }
 
   let queueSet = new MessageEmbed()
@@ -26,26 +30,26 @@ exports.run = async (client, message, args) => {
             return `**${i + 1}** - ${track.title} `;
           })
           .slice(0, 5)
-          .join('\n') +
+          .join("\n") +
           `\n\n${
             queue.tracks.length > 5
               ? `And **${queue.tracks.length - 5}** other songs...`
               : ``
           }`)
     )
-    .setColor('#F96CFF ');
+    .setColor("#ff0000 ");
 
   message.channel.send(queueSet);
 };
 
 exports.help = {
-  name: 'queue',
-  description: 'Shows the queue',
-  usage: 'queue',
-  example: 'queue',
+  name: "queue",
+  description: "Shows the queue",
+  usage: "queue",
+  example: "queue",
 };
 
 exports.conf = {
-  aliases: ['q'],
+  aliases: ["q"],
   cooldown: 0,
 };

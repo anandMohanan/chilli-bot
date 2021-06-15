@@ -1,12 +1,12 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
-const lyricsFinder = require('lyrics-finder');
+const lyricsFinder = require("lyrics-finder");
 
 exports.run = async (client, message, args) => {
-  let songName = args.join(' ');
+  let songName = args.join(" ");
   try {
-    lyrics = await lyricsFinder(songName, '');
+    lyrics = await lyricsFinder(songName, "");
     if (!lyrics) lyrics = `No lyrics found for ${songName}`;
   } catch (error) {
     lyrics = `No lyrics found for ${songName}.`;
@@ -14,9 +14,9 @@ exports.run = async (client, message, args) => {
 
   let lyricsEmbed = new MessageEmbed()
     .setAuthor(`${songName} — Lyrics`)
-    .setColor('YELLOW')
+    .setColor("#ff0000")
     .setDescription(`\`${lyrics}\``)
-    
+
     .setTimestamp();
 
   if (lyricsEmbed.description.length >= 2048)
@@ -24,14 +24,14 @@ exports.run = async (client, message, args) => {
   return message.channel.send(lyricsEmbed).catch(console.error);
 };
 exports.help = {
-  name: 'lyrics',
-  description: 'lyrics of the given song',
-  usage: 'lyrics',
-  example: 'lyrics golden',
+  name: "lyrics",
+  description: "lyrics of the given song",
+  usage: "lyrics",
+  example: "lyrics golden",
 };
 
 exports.conf = {
-  aliases: ['ly'],
+  aliases: ["ly"],
   cooldown: 10, // This number is a seconds, not a milliseconds.
   // 1 = 1 seconds.
 };

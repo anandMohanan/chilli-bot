@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
   const embed = new MessageEmbed()
     .setThumbnail(client.user.displayAvatarURL())
     .setTitle("Bot Stats")
-    .setColor("#000000")
+    .setColor("#ff0000")
     .addFields(
       {
         name: "🌐 Servers",

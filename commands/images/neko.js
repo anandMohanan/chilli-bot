@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
-const { Random } = require('something-random-on-discord');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
+const { Random } = require("something-random-on-discord");
 const random = new Random();
 
 exports.run = async (client, message, args) => {
@@ -9,9 +9,9 @@ exports.run = async (client, message, args) => {
     const img = data.embed.image.url;
 
     const imgEmbed = new MessageEmbed()
-      .setTitle('UwU')
+      .setTitle("UwU")
       .setImage(img)
-      .setColor('#FFC0CB')
+      .setColor("#ff0000")
       .setTimestamp();
     message.channel.send(imgEmbed);
   } catch (err) {
@@ -20,13 +20,13 @@ exports.run = async (client, message, args) => {
 };
 
 exports.help = {
-  name: 'neko',
-  description: 'random neko image',
-  usage: 'neko',
-  example: 'neko',
+  name: "neko",
+  description: "random neko image",
+  usage: "neko",
+  example: "neko",
 };
 
 exports.conf = {
-  aliases: ['ne'],
+  aliases: ["ne"],
   cooldown: 0,
 };

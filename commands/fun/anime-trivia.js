@@ -5,14 +5,14 @@ exports.run = async (client, message, args) => {
   try {
     const choices = ["A", "B", "C", "D"];
     const data = await fetch(
-      "https://opentdb.com/api.php?amount=10&category=31&type=multiple",
+      "https://opentdb.com/api.php?amount=10&category=31&type=multiple"
     );
     const body = await data.json();
     const answers = body.results[0].incorrect_answers.map((answer) =>
-      decodeURIComponent(answer.toLowerCase()),
+      decodeURIComponent(answer.toLowerCase())
     );
     const correct = decodeURIComponent(
-      body.results[0].correct_answer.toLowerCase(),
+      body.results[0].correct_answer.toLowerCase()
     );
     const question = body.results[0].question;
     const correctQuestion = question.replace(/(&quot\;)/g, '"');
@@ -28,10 +28,17 @@ exports.run = async (client, message, args) => {
       return arr;
     };
     const shuffled = shuffle(answers);
-    await message.reply(stripIndents`**You have 15 seconds.**\n
-				${decodeURIComponent(correctQuestion)}
-				${shuffled.map((answer, i) => `**${choices[i]}.** ${answer}`).join("\n")}
-			`);
+    let msgQuestion = new Discord.MessageEmbed()
+      .setColor("#ff0000")
+      .setTitle("You have 15 seconds").setDescription(`${decodeURIComponent(
+      correctQuestion
+    )}
+    ${shuffled.map((answer, i) => `**${choices[i]}.** ${answer}`).join("\n")}`);
+    // await message.reply(stripIndents`**You have 15 seconds.**\n
+    // 		${decodeURIComponent(correctQuestion)}
+    // 		${shuffled.map((answer, i) => `**${choices[i]}.** ${answer}`).join("\n")}
+    // 	`);
+    await message.reply(msgQuestion);
     const filter = (res) =>
       res.author.id === message.author.id &&
       choices.includes(res.content.toUpperCase());
@@ -61,4 +68,3 @@ exports.conf = {
   aliases: ["at"],
   cooldown: 3,
 };
-

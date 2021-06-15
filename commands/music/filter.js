@@ -1,14 +1,14 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
-const filters = require('../../filters.json');
+const filters = require("../../filters.json");
 
 exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
     let filternoVoice = new MessageEmbed()
-      .setTitle('You need to join a voice channel first!')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
-      .setColor('#2ED8BA')
+      .setTitle("You need to join a voice channel first!")
+      .setThumbnail("https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif")
+      .setColor("#ff0000")
       .setTimestamp();
     return message.channel.send(filternoVoice).then((msg) => {
       msg.delete({ timeout: 8000 });
@@ -17,8 +17,8 @@ exports.run = async (client, message, args) => {
   if (!client.player.getQueue(message)) {
     let filterNo = new MessageEmbed()
       .setTitle(`No music playing on this server `)
-      .setColor('#2ED8BA')
-      .setThumbnail('https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif')
+      .setColor("#ff0000")
+      .setThumbnail("https://media.giphy.com/media/Su7qfpu8YVBqE/giphy.gif")
       .setTimestamp();
     return message.channel.send(filterNo).then((msg) => {
       msg.delete({ timeout: 8000 });
@@ -28,11 +28,11 @@ exports.run = async (client, message, args) => {
   if (!filter) {
     let filterValid = new MessageEmbed()
       .setTitle(
-        '**Please use these Filters**\n`bassboost`, `8D`, `vaporwave`, `nightcore`, `phaser`, `tremolo`, `vibrato`, `reverse`, `treble`, `normalizer`, `surrounding`, `pulsator`, `subboost`, `karaoke`, `flanger`, `gate`, `haas`, `mcompand`'
+        "**Please use these Filters**\n`bassboost`, `8D`, `vaporwave`, `nightcore`, `phaser`, `tremolo`, `vibrato`, `reverse`, `treble`, `normalizer`, `surrounding`, `pulsator`, `subboost`, `karaoke`, `flanger`, `gate`, `haas`, `mcompand`"
       )
-      .setColor('#674AB3 ')
+      .setColor("#ff0000 ")
       .setTimestamp();
-    return message.channel.send(filterValid)
+    return message.channel.send(filterValid);
   }
   const filterToUpdate = Object.values(filters).find(
     (f) => f.toLowerCase() === filter.toLowerCase()
@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
   if (!filterToUpdate) {
     let filterInValid = new MessageEmbed()
       .setTitle(`This filter doesn't exist `)
-      .setColor('#2ED8BA')
+      .setColor("#ff0000")
       .setTimestamp();
     return message.channel.send(filterInValid).then((msg) => {
       msg.delete({ timeout: 8000 });
@@ -61,29 +61,29 @@ exports.run = async (client, message, args) => {
       .setTitle(
         `I'm **adding** the filter to the music, please wait...\nNote : the longer the music is, the longer this will take `
       )
-      .setColor('#674AB3 ')
+      .setColor("#ff0000 ")
       .setTimestamp();
-    message.channel.send(filterSet)
+    message.channel.send(filterSet);
   } else {
     let filterNoSet = new MessageEmbed()
       .setTitle(
         `I'm **disabling** the filter on the music, please wait...\nNote : the longer the music is playing, the longer this will take `
       )
-      .setColor('#674AB3 ')
+      .setColor("#ff0000 ")
 
       .setTimestamp();
     message.channel.send(filterNoSet);
   }
 };
 exports.help = {
-  name: 'filter',
-  description: 'Shows a list of filters and can choose from the list',
-  usage: 'filter',
-  example: 'filter bassboost',
+  name: "filter",
+  description: "Shows a list of filters and can choose from the list",
+  usage: "filter",
+  example: "filter bassboost",
 };
 
 exports.conf = {
-  aliases: ['f'],
+  aliases: ["f"],
   cooldown: 10, // This number is a seconds, not a milliseconds.
   // 1 = 1 seconds.
 };

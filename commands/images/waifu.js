@@ -1,13 +1,14 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
-const { Random } = require('something-random-on-discord');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
+const { Random } = require("something-random-on-discord");
 const random = new Random();
 
 exports.run = async (client, message, args) => {
   try {
-    let data = await random.getAnimeImgURL('waifu');
+    let data = await random.getAnimeImgURL("waifu");
     const waifuEmbed = new MessageEmbed()
-      .setTitle(':)')
+      .setTitle(":)")
+      .setColor("#ff0000")
       .setImage(data)
       .setTimestamp();
     message.channel.send(waifuEmbed);
@@ -16,13 +17,13 @@ exports.run = async (client, message, args) => {
   }
 };
 exports.help = {
-  name: 'waifu',
-  description: 'random waifu image',
-  usage: 'waifu',
-  example: 'waifu',
+  name: "waifu",
+  description: "random waifu image",
+  usage: "waifu",
+  example: "waifu",
 };
 
 exports.conf = {
-  aliases: ['wa'],
+  aliases: ["wa"],
   cooldown: 0,
 };

@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
-const { Random } = require('something-random-on-discord');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
+const { Random } = require("something-random-on-discord");
 const random = new Random();
 
 exports.run = async (client, message, args) => {
@@ -11,25 +11,25 @@ exports.run = async (client, message, args) => {
       });
     let user = message.mentions.users.first();
     console.log(user.username);
-    let data = await random.getAnimeImgURL('kiss');
+    let data = await random.getAnimeImgURL("kiss");
     const kissEmb = new MessageEmbed()
       .setTitle(
         `${user.username}, You got a kiss from ${message.author.username} ❤`
       )
-      .setColor('#CA7CD8')
+      .setColor("#ff0000")
       .setImage(data)
       .setTimestamp();
     message.channel.send(kissEmb);
   } catch (err) {}
 };
 exports.help = {
-  name: 'kiss',
-  description: 'kiss the mentioned user',
-  usage: 'kiss [@user]',
-  example: 'kiss @kevin malone',
+  name: "kiss",
+  description: "kiss the mentioned user",
+  usage: "kiss [@user]",
+  example: "kiss @kevin malone",
 };
 
 exports.conf = {
-  aliases: [''],
+  aliases: [""],
   cooldown: 0,
 };
