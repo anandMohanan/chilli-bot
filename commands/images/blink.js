@@ -20,8 +20,7 @@ exports.run = async (client, message, args) => {
     message.channel.send(jakfh);
     message.channel.send(jhjhg);
     let image = await new DIG.Blink().getImage(img1, img2);
-    let adembed = new MessageEmbed().setImage(attach).setColor("#ff0000");
-    return await message.channel.send(adembed);
+    return await message.channel.send(image);
   } catch (err) {
     console.log(err);
   }

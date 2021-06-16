@@ -22,8 +22,7 @@ exports.run = async (client, message, args) => {
     //message.channel.send(jhjhg);
     let image = await new DIG.Kiss().getImage(img1, img2);
     let attach = new Discord.MessageAttachment(image, "kiss.png");
-    let adembed = new MessageEmbed().setImage(attach).setColor("#ff0000");
-    return await message.channel.send(adembed);
+    return await message.channel.send(attach);
   } catch (err) {
     console.log(err);
   }

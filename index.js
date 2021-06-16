@@ -2,7 +2,7 @@
 
 const Discord = require("discord.js");
 const ChilliBot = require("./handler/ClientBuilder.js");
-require("discord-reply");
+
 const client = new ChilliBot();
 const { Player } = require("discord-player");
 const { MessageEmbed } = require("discord.js");
@@ -35,7 +35,7 @@ client.on("ready", () => {
       `The will was of Zeus, the hand of Hephaestus.`,
     ];
     let rstatus = Math.floor(Math.random() * status.length);
-    client.user.setActivity(status[rstatus], { type: "LISTENING" });
+    client.user.setActivity(status[rstatus], { type: "CUSTOM_STATUS" });
   }
   setInterval(randomStatus, 1000000);
 });
@@ -47,7 +47,7 @@ const random = Math.floor(Math.random() * (max - min + 1)) + min; //Number Gener
 client.on("message", async (message) => {
   //Make sure Event Listener is Asynchrononous
   if (message.author.bot) return;
-  
+
   // Make Sure this Code is under Message Event Listener
 });
 
@@ -117,20 +117,24 @@ client.player
 
   // Send a message when the music is stopped
   .on("channelEmpty", async (message, queue) => {
-    await message.channel
-      .send(
+    let Nomusicembed = new MessageEmbed()
+      .setColor("#ff0000")
+      .setDescription(
         "` Music stopped as there is no more member in the voice channel !`"
-      )
-      .then((msg) => {
-        msg.delete({ timeout: 10000 });
-      });
+      );
+    await message.channel.send(Nomusicembed).then((msg) => {
+      msg.delete({ timeout: 10000 });
+    });
   })
   .on("botDisconnect", async (message, queue) => {
-    await message.channel
-      .send("`Music stopped as i have been disconnected from the channel !`")
-      .then((msg) => {
-        msg.delete({ timeout: 10000 });
-      });
+    let musicstopembed = new MessageEmbed()
+      .setColor("#ff0000")
+      .setDescription(
+        "`Music stopped as i have been disconnected from the channel !`"
+      );
+    await message.channel.send(musicstopembed).then((msg) => {
+      msg.delete({ timeout: 10000 });
+    });
   })
 
   // Error handling

@@ -7,10 +7,8 @@ exports.run = async (client, message, args) => {
     const res = await fetch("https://dog-api.kinduff.com/api/facts");
     const fact = (await res.json()).facts[0];
     const embed = new MessageEmbed()
-      .setTitle("🐶  Dog Fact  🐶")
+      .setTitle("Dog Fact")
       .setDescription(fact)
-
-      .setTimestamp()
       .setColor("#ff0000");
     message.channel.send(embed);
   } catch (err) {

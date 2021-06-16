@@ -15,8 +15,7 @@ exports.run = async (client, message, args) => {
   let avatar = await user.displayAvatarURL({ dynamic: false, format: "png" });
   let image = await new DIG.Triggered().getImage(avatar);
   let attach = new Discord.MessageAttachment(image, "triggered.gif");
-  let adembed = new MessageEmbed().setImage(attach).setColor("#ff0000");
-  return await message.channel.send(adembed);
+  return await message.channel.send(attach);
 };
 
 exports.help = {

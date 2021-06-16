@@ -1,10 +1,12 @@
 const Discord = require("discord.js");
-require("discord-reply");
 
 exports.run = async (client, message, args) => {
-  message.lineReplyNoMention(
-    `\`Pong! This message had a latency of ${client.ws.ping}ms.\``
-  );
+  let pingEmbed = new Discord.MessageEmbed()
+    .setColor("#ff0000")
+    .setDescription(
+      `\`Pong! This message had a latency of ${client.ws.ping}ms.\``
+    );
+  message.channel.send(pingEmbed);
 };
 
 exports.help = {

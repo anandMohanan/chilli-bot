@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 exports.run = async (client, message, args) => {
   let seconds = Math.floor(message.client.uptime / 1000);
@@ -10,18 +10,23 @@ exports.run = async (client, message, args) => {
   seconds %= 60;
   minutes %= 60;
   hours %= 24;
-  return message.reply(` Uptime: \`${days} day(s),${hours} hours, ${minutes} minutes, ${seconds} seconds\``).catch(console.error);
+  let uptimeEmbed = new MessageEmbed()
+    .setColor("#ff0000")
+    .setDescription(
+      ` Uptime: \`${days} day(s),${hours} hours, ${minutes} minutes, ${seconds} seconds\``
+    );
+  return message.channel.send(uptimeEmbed).catch(console.error);
 };
 
 exports.help = {
-  name: 'uptime',
-  description: 'Shows how long the bot was online',
-  usage: 'uptime',
-  example: 'uptime',
+  name: "uptime",
+  description: "Shows how long the bot was online",
+  usage: "uptime",
+  example: "uptime",
 };
 
 exports.conf = {
-  aliases: ['up'],
+  aliases: ["up"],
   cooldown: 0, // This number is a seconds, not a milliseconds.
   // 1 = 1 seconds.
 };

@@ -12,9 +12,7 @@ exports.run = async (client, message, args) => {
     let adviceEmbed = new MessageEmbed()
       .setAuthor("Advice")
       .setColor("#ff0000 ")
-      .setDescription(ans)
-
-      .setTimestamp();
+      .setDescription(ans);
     message.channel.send(adviceEmbed);
   } catch (err) {
     message.channel.send(

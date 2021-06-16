@@ -30,14 +30,12 @@ exports.run = async (client, message, args) => {
       "Please provide a question to ask"
     );
   const embed = new MessageEmbed()
-    .setTitle("🎱  The Magic 8-Ball  🎱")
+    .setTitle("The Magic 8-Ball")
     .addField("Question", question)
     .addField(
       "Answer",
       `${answers[Math.floor(Math.random() * answers.length)]}`
     )
-
-    .setTimestamp()
     .setColor("#ff0000");
   message.channel.send(embed);
 };

@@ -15,8 +15,7 @@ exports.run = async (client, message, args) => {
   let avatar = await user.displayAvatarURL({ dynamic: false, format: "png" });
   let level = 5;
   let image = await new DIG.Blur().getImage(avatar, level);
-  let adembed = new MessageEmbed().setImage(attach).setColor("#ff0000");
-  return await message.channel.send(adembed);
+  return await message.channel.send(image);
 };
 
 exports.help = {

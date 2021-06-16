@@ -27,7 +27,7 @@ exports.help = {
   name: "avatar",
   description: "Shows avatar of a User",
   usage: "avatar [@user]",
-  example: "avatar @kevin malone",
+  example: "avatar @user",
 };
 
 exports.conf = {

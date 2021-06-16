@@ -3,20 +3,22 @@ const { MessageEmbed } = require("discord.js");
 
 exports.run = async (client, message, args) => {
   if (!message.member.voice.channel) {
-    return message.channel
-      .send("`You need to join a voice channel first!`")
-      .then((msg) => {
-        msg.delete({ timeout: 8000 });
-      });
+    let joinVcfirstembed = new MessageEmbed()
+      .setColor("#ff0000")
+      .setDescription("`You need to join a voice channel first!`");
+    return message.channel.send(joinVcfirstembed).then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
   const queue = client.player.getQueue(message);
 
   if (!queue) {
-    return message.channel
-      .send("`No music playing on this server `")
-      .then((msg) => {
-        msg.delete({ timeout: 8000 });
-      });
+    let nomusicembed = new MessageEmbed()
+      .setColor("#ff0000")
+      .setDescription("`No music playing on this server `");
+    return message.channel.send(nomusicembed).then((msg) => {
+      msg.delete({ timeout: 8000 });
+    });
   }
 
   let queueSet = new MessageEmbed()

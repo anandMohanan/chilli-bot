@@ -16,8 +16,7 @@ exports.run = async (client, message, args) => {
   //let level = 5;
   let image = await new DIG.Gay().getImage(avatar);
   let attach = new Discord.MessageAttachment(image, "gay.png");
-  let adembed = new MessageEmbed().setImage(attach).setColor("#ff0000");
-  return await message.channel.send(adembed);
+  return await message.channel.send(attach);
 };
 
 exports.help = {
