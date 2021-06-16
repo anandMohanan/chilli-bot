@@ -2,6 +2,7 @@
 
 const Discord = require("discord.js");
 const ChilliBot = require("./handler/ClientBuilder.js");
+require("discord-reply");
 const client = new ChilliBot();
 const { Player } = require("discord-player");
 const { MessageEmbed } = require("discord.js");
@@ -46,6 +47,7 @@ const random = Math.floor(Math.random() * (max - min + 1)) + min; //Number Gener
 client.on("message", async (message) => {
   //Make sure Event Listener is Asynchrononous
   if (message.author.bot) return;
+  
   // Make Sure this Code is under Message Event Listener
 });
 
