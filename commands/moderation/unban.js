@@ -1,30 +1,39 @@
-const { MessageEmbed } = require("discord.js");
+const Discord = require("discord.js");
 
 exports.run = async (client, message, args) => {
-  if (!message.member.hasPermission("BAN_MEMBERS"))
-    return message.channel
-      .send("You are missing **BAN_MEMBERS** permission!")
-      .then((m) => m.delete({ timeout: 5000 }));
-
-  if (!args[0])
-    return message.channel
-      .send("please enter a users id to unban!")
-      .then((m) => m.delete({ timeout: 5000 }));
-
+  if (!message.member.hasPermission("BAN_MEMBERS")) {
+    let unbanperm = new Discord.MessageEmbed()
+      .setColor("#CEA2D7")
+      .setDescription(`You dont have enough permissions to ban members`);
+    return message
+      .lineReply(unbanperm)
+      .then((m) => m.delete({ timeout: 50000 }));
+  }
+  if (!args[0]) {
+    let unbanarg = new Discord.MessageEmbed()
+      .setColor("#CEA2D7")
+      .setDescription(`Please mention a user!`);
+    return message
+      .lineReply(unbanarg)
+      .then((m) => m.delete({ timeout: 50000 }));
+  }
   let member;
 
   try {
     member = await client.users.fetch(args[0]);
   } catch (e) {
     console.log(e);
-    return message.channel
-      .send("Not a valid user!")
-      .then((m) => m.delete({ timeout: 5000 }));
+    let unbanerr = new Discord.MessageEmbed()
+      .setColor("#CEA2D7")
+      .setDescription("User is not in this server!");
+    return message
+      .lineReply(unbanerr)
+      .then((m) => m.delete({ timeout: 50000 }));
   }
 
   const reason = args[1] ? args.slice(1).join(" ") : "no reason";
 
-  const embed = new MessageEmbed().setFooter(
+  const embed = new Discord.MessageEmbed().setFooter(
     `${message.author.tag} | ${message.author.id}`,
     message.author.displayAvatarURL({ dynamic: true })
   );
@@ -37,7 +46,7 @@ exports.run = async (client, message, args) => {
       if (user) {
         embed
           .setTitle(`Successfully Unbanned ${user.user.tag}`)
-          .setColor("#ff0000")
+          .setColor("#CEA2D7")
           .addField("User ID", user.user.id, true)
           .addField("user Tag", user.user.tag, true)
           .addField(
@@ -49,13 +58,16 @@ exports.run = async (client, message, args) => {
           .unban(user.user.id, reason)
           .then(() => message.channel.send(embed));
       } else {
-        embed.setTitle(`User ${member.tag} isn't banned!`).setColor("#ff0000");
-        message.channel.send(embed);
+        embed.setTitle(`User ${member.tag} isn't banned!`).setColor("#CEA2D7");
+        message.lineReply(embed);
       }
     })
     .catch((e) => {
       console.log(e);
-      message.channel.send("An error has occurred!");
+      let banerrr = new Discord.MessageEmbed()
+        .setColor("#CEA2D7")
+        .setDescription("An error has occurred!");
+      message.lineReply(banerrr);
     });
 };
 

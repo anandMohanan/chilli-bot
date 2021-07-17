@@ -4,18 +4,18 @@ const fetch = require("node-fetch");
 exports.run = async (client, message, args) => {
   let user = message.mentions.users.first();
   if (message.mentions.users === message.author.username)
-    return message.reply("You can not roast yourself");
+    return message.lineReply("You can not roast yourself");
   if (message.mentions.users.size < 1)
-    return message.reply("You must mention someone to roast them.");
+    return message.lineReply("You must mention someone to roast them.");
 
   let body = await fetch(
     "https://evilinsult.com/generate_insult.php?lang=en&type=json"
   );
   let roast = await body.json();
   let roastEmbed = new Discord.MessageEmbed()
-    .setColor("#ff0000")
+    .setColor("#A348A6")
     .setDescription(user.username + ", " + roast.insult);
-  await message.channel.send(roastEmbed);
+  await message.lineReplyNoMention(roastEmbed);
 };
 
 exports.help = {

@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
     message.channel.send(jakfh);
     message.channel.send(jhjhg);
     let image = await new DIG.Blink().getImage(img1, img2);
-    return await message.channel.send(image);
+    return await message.lineReply(image);
   } catch (err) {
     console.log(err);
   }

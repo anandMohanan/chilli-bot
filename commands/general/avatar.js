@@ -14,13 +14,13 @@ exports.run = async (client, message, args) => {
   let avatar = user.displayAvatarURL({ size: 4096, dynamic: true });
   let avatarEmbed = new MessageEmbed()
     .setImage(avatar)
-    .setColor("#ff0000")
+    .setColor("#A348A6")
     .setFooter(
       message.member.displayName,
       message.author.displayAvatarURL({ dynamic: true })
     )
     .setTimestamp();
-  return message.channel.send(avatarEmbed);
+  return message.lineReplyNoMention(avatarEmbed);
 };
 
 exports.help = {

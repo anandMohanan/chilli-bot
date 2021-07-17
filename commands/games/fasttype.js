@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     embed: {
       title: "FastType",
       description: "You have **{{time}}** to type the below sentence.",
-      color: "#7289da",
+      color: "#674AB3",
       timestamp: true,
     },
     sentence: "This is a sentence!",

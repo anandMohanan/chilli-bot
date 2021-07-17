@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
     message: message,
     embed: {
       title: "Lie Swatter ",
-      color: "#7289da",
+      color: "#674AB3",
       timestamp: true,
     },
     thinkMessage: "I am thinking",

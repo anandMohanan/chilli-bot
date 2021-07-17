@@ -1,12 +1,16 @@
 const Discord = require("discord.js");
 
 exports.run = async (client, message, args) => {
-  let pingEmbed = new Discord.MessageEmbed()
-    .setColor("#ff0000")
-    .setDescription(
-      `\`Pong! This message had a latency of ${client.ws.ping}ms.\``
-    );
-  message.channel.send(pingEmbed);
+  message.lineReplyNoMention("ping").then(async (sent) => {
+    const created = message.createdTimestamp;
+    sent.delete();
+    let pingEmbed = new Discord.MessageEmbed()
+      .setColor("#A348A6")
+      .setTitle("Pong!")
+      .addField("Latency", `${sent.createdTimestamp - created}ms`)
+      .addField("Discord API Latency", `${Math.round(client.ws.ping)}ms`);
+    return message.lineReplyNoMention(pingEmbed);
+  });
 };
 
 exports.help = {

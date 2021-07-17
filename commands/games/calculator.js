@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     message: message,
     embed: {
       title: "Calculator ",
-      color: "#ff0000",
+      color: "#674AB3",
     },
     disabledQuery: "Calculator is disabled!",
     invalidQuery: "The provided equation is invalid!",

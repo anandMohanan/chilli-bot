@@ -6,7 +6,7 @@ const random = new Random();
 exports.run = async (client, message, args) => {
   try {
     if (message.mentions.users.size < 1)
-      return message.channel.send("you can't pat nobody").then((msg) => {
+      return message.lineReply("you can't pat nobody").then((msg) => {
         msg.delete({ timeout: 10000 });
       });
     let user = message.mentions.users.first();
@@ -15,9 +15,9 @@ exports.run = async (client, message, args) => {
     const patEmb = new MessageEmbed()
       .setTitle(`${message.author.username} patted ${user.username} ❤`)
       .setImage(data)
-      .setColor("#ff0000")
+      .setColor("#A348A6")
       .setTimestamp();
-    message.channel.send(patEmb);
+    message.lineReply(patEmb);
   } catch (err) {}
 };
 exports.help = {

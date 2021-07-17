@@ -2,23 +2,23 @@ const Discord = require('discord.js');
 
 exports.run = async (client, message, args) => {
   if (!args[0]) {
-    return message.channel.send( '`Unknown parameter. Please choose the method first, either decode or encode it.`');
+    return message.lineReply( '`Unknown parameter. Please choose the method first, either decode or encode it.`');
   }
   let choice = ['encode', 'decode'];
   if (!choice.includes(args[0].toLowerCase())) {
-    return message.channel.send( '`Unknown parameter. Please choose the method first, either decode or encode it.`');
+    return message.lineReply( '`Unknown parameter. Please choose the method first, either decode or encode it.`');
   }
   let text = args.slice(1).join(' ');
   // binary <encode | decode> <text>
   // binary encode blob development
 
   if (!text) {
-    return message.channel.send('`Unknown parameter. Please choose the method first, either decode or encode it.`');
+    return message.lineReply('`Unknown parameter. Please choose the method first, either decode or encode it.`');
   }
 
   // Do this because more than that, the binary code wouldn't be fit anymore.
   if (text.length > 1024) {
-    return message.channel.send('`That is way too much. The maximum character was 1,024.`');
+    return message.lineReply('`That is way too much. The maximum character was 1,024.`');
   }
   function encode(char) {
     return char
@@ -38,9 +38,9 @@ exports.run = async (client, message, args) => {
   }
 
   if (args[0].toLowerCase() === 'encode') {
-    return message.channel.send(encode(text));
+    return message.lineReplyNoMention(encode(text));
   } else if (args[0].toLowerCase() === 'decode') {
-    return message.channel.send(decode(text));
+    return message.lineReplyNoMention(decode(text));
   }
 };
 

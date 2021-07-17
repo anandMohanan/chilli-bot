@@ -9,8 +9,8 @@ exports.run = async (client, message, args) => {
     const embed = new MessageEmbed()
       .setTitle("Dog Fact")
       .setDescription(fact)
-      .setColor("#ff0000");
-    message.channel.send(embed);
+      .setColor("#A348A6");
+    message.lineReplyNoMention(embed);
   } catch (err) {
     message.client.logger.error(err.stack);
     this.sendErrorMessage(

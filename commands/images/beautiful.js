@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
   let avatar = await user.displayAvatarURL({ dynamic: false, format: "png" });
   let image = await new DIG.Beautiful().getImage(avatar);
   let attach = new Discord.MessageAttachment(image, "beautiful.png");
-  return await message.channel.send(attach);
+  return await message.lineReply(attach);
 };
 
 exports.help = {

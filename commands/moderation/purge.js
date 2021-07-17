@@ -1,7 +1,6 @@
 /** @format */
 
 const Discord = require("discord.js");
-const { MessageEmbed } = require("discord.js");
 
 exports.run = async (client, message, args) => {
   if (
@@ -10,29 +9,42 @@ exports.run = async (client, message, args) => {
   ) {
     const amount = parseInt(args[0]) + 1;
     if (isNaN(amount)) {
-      return message
-        .reply("`that doesn't seem to be a valid number.`")
-        .then((msg) => {
-          msg.delete({ timeout: 20000 });
-        });
+      let purgeNan = new Discord.MessageEmbed()
+        .setColor("#CEA2D7")
+        .setDescription(`that doesn't seem to be a valid number.`);
+      return message.lineReply(purgeNan).then((msg) => {
+        msg.delete({ timeout: 20000 });
+      });
     } else if (amount <= 1 || amount > 100) {
-      return message.reply("`you need to input a number between 1 and 99.`");
+      let purgelimit = new Discord.MessageEmbed()
+        .setColor("#CEA2D7")
+        .setDescription(`you need to input a number between 1 and 99.`);
+      return message.lineReply(purgelimit);
     }
 
     message.channel.bulkDelete(amount, true);
     try {
-      message.channel.send(`\`${amount} messages deleted\``).then((msg) => {
-        msg.delete({ timeout: 1000 });
+      let purgedone = new Discord.MessageEmbed()
+        .setColor("#CEA2D7")
+        .setDescription(`${amount} messages deleted`);
+      message.lineReply(purgedone).then((msg) => {
+        msg.delete({ timeout: 10000 });
       });
     } catch (err) {
-      message.channel
-        .send("`there was an error trying to prune messages in this channel!`")
-        .then((msg) => {
-          msg.delete({ timeout: 10000 });
-        });
+      let purgerror = new Discord.MessageEmbed()
+        .setColor("#CEA2D7")
+        .setDescription(
+          `there was an error trying to prune messages in this channel!`
+        );
+      message.lineReply(purgerror).then((msg) => {
+        msg.delete({ timeout: 10000 });
+      });
     }
   } else {
-    message.channel.send("`Access Denied`").then((msg) => {
+    let purgeperm = new Discord.MessageEmbed()
+      .setColor("#CEA2D7")
+      .setDescription(`Access Denied`);
+    message.lineReply(purgeperm).then((msg) => {
       msg.delete({ timeout: 10000 });
     });
   }

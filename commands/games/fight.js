@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
     opponent: message.mentions.users.first(),
     embed: {
       title: "Fight",
-      color: "#7289da",
+      color: "#674AB3",
       timestamp: true,
     },
     buttons: {

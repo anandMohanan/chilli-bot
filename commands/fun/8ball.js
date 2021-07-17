@@ -36,8 +36,8 @@ exports.run = async (client, message, args) => {
       "Answer",
       `${answers[Math.floor(Math.random() * answers.length)]}`
     )
-    .setColor("#ff0000");
-  message.channel.send(embed);
+    .setColor("#A348A6");
+  message.lineReplyNoMention(embed);
 };
 exports.help = {
   name: "8ball",

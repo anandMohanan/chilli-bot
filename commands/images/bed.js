@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
     //message.channel.send(jakfh);
     //message.channel.send(jhjhg);
     let image = await new DIG.Bed().getImage(img1, img2);
-    return await message.channel.send(attach);
+    return await message.lineReply(attach);
   } catch (err) {
     console.log(err);
   }

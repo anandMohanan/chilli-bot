@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
       title: "Guess The Pokémon",
       description:
         "**Type:**\n{{type}}\n\n**Abilities:**\n{{abilities}}\n\nYou only have **{{time}}** to guess the pokémon.",
-      color: "#7289da",
+      color: "#674AB3",
       timestamp: true,
     },
     thinkMessage: "I am thinking",

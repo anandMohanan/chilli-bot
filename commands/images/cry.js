@@ -9,8 +9,8 @@ exports.run = async (client, message, args) => {
     const cryEmb = new MessageEmbed()
       .setImage(data)
       .setTimestamp()
-      .setColor("#ff0000");
-    message.channel.send(cryEmb);
+      .setColor("#A348A6");
+    message.lineReply(cryEmb);
   } catch (err) {}
 };
 exports.help = {

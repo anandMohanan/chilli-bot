@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
   const embed = new MessageEmbed()
     .setThumbnail(client.user.displayAvatarURL())
     .setTitle("Bot Stats")
-    .setColor("#ff0000")
+    .setColor("#A348A6")
     .addFields(
       {
         name: "🌐 Servers",
@@ -40,7 +40,7 @@ exports.run = async (client, message, args) => {
     )
     .setFooter(`Created By:  Kevin Malone#8142`);
 
-  await message.channel.send(embed);
+  await message.lineReplyNoMention(embed);
 };
 exports.help = {
   name: "stats",

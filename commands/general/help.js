@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
     if (!client.config.owners.includes(message.author.id))
       module = client.helps.array().filter((x) => !x.hide);
     const embed = new Discord.MessageEmbed()
-      .setColor("#ff0000 ")
+      .setColor("#A348A6 ")
       .setThumbnail(message.guild.iconURL())
       .setTimestamp()
       .setDescription(
@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
       );
     }
 
-    return message.channel.send(embed);
+    return message.lineReplyNoMention(embed);
   } else {
     let cmd = args.join(" ");
 
@@ -57,7 +57,7 @@ exports.run = async (client, message, args) => {
         : "No example provided.";
 
       let embed = new Discord.MessageEmbed()
-        .setColor("#ff0000")
+        .setColor("#A348A6")
         .setTitle(name)
         .setDescription(desc)
         .setThumbnail(message.guild.iconURL())
@@ -71,10 +71,10 @@ exports.run = async (client, message, args) => {
           message.author.displayAvatarURL({ dynamic: true })
         );
 
-      return message.channel.send(embed);
+      return message.lineReplyNoMention(embed);
     } else {
       // If the user type the wrong command.
-      return message.channel.send({
+      return message.lineReplyNoMention({
         embed: { color: "#ff0000", description: "Unknown command." },
       });
     }

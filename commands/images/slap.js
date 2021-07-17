@@ -6,7 +6,7 @@ const random = new Random();
 exports.run = async (client, message, args) => {
   try {
     if (message.mentions.users.size < 1)
-      return message.channel.send("you can't slap nobody").then((msg) => {
+      return message.lineReply("you can't slap nobody").then((msg) => {
         msg.delete({ timeout: 10000 });
       });
     let user = message.mentions.users.first();
@@ -15,9 +15,9 @@ exports.run = async (client, message, args) => {
     const slapEmb = new MessageEmbed()
       .setTitle(`${message.author.username} slapped ${user.username}`)
       .setImage(data)
-      .setColor("#ff0000")
+      .setColor("#A348A6")
       .setTimestamp();
-    message.channel.send(slapEmb);
+    message.lineReply(slapEmb);
   } catch (err) {}
 };
 exports.help = {

@@ -11,9 +11,9 @@ exports.run = async (client, message, args) => {
     const imgEmbed = new MessageEmbed()
       .setTitle("UwU")
       .setImage(img)
-      .setColor("#ff0000")
+      .setColor("#A348A6")
       .setTimestamp();
-    message.channel.send(imgEmbed);
+    message.lineReply(imgEmbed);
   } catch (err) {
     console.log(err);
   }

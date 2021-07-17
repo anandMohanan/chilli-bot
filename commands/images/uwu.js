@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
     //message.channel.send(jhjhg);
     let image = await new DIG.Kiss().getImage(img1, img2);
     let attach = new Discord.MessageAttachment(image, "kiss.png");
-    return await message.channel.send(attach);
+    return await message.lineReply(attach);
   } catch (err) {
     console.log(err);
   }

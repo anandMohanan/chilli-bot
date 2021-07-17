@@ -11,8 +11,8 @@ exports.run = async (client, message, args) => {
       .setImage(img)
 
       .setTimestamp()
-      .setColor("#ff0000");
-    message.channel.send(embed);
+      .setColor("#A348A6");
+    message.lineReply(embed);
   } catch (err) {
     message.client.logger.error(err.stack);
     this.sendErrorMessage(

@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
-const { Random } = require("something-random-on-discord");
+const { Random} = require("something-random-on-discord");
 const random = new Random();
 
 exports.run = async (client, message, args) => {
@@ -9,9 +9,9 @@ exports.run = async (client, message, args) => {
     const smugEmbed = new MessageEmbed()
       .setTitle(":D")
       .setImage(data)
-      .setColor("#ff0000")
+      .setColor("#A348A6")
       .setTimestamp();
-    message.channel.send(smugEmbed);
+    message.lineReply(smugEmbed);
   } catch (err) {}
 };
 exports.help = {

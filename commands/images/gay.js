@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
   //let level = 5;
   let image = await new DIG.Gay().getImage(avatar);
   let attach = new Discord.MessageAttachment(image, "gay.png");
-  return await message.channel.send(attach);
+  return await message.lineReply(attach);
 };
 
 exports.help = {

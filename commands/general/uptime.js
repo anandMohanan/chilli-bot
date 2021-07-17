@@ -11,11 +11,11 @@ exports.run = async (client, message, args) => {
   minutes %= 60;
   hours %= 24;
   let uptimeEmbed = new MessageEmbed()
-    .setColor("#ff0000")
+    .setColor("#A348A6")
     .setDescription(
       ` Uptime: \`${days} day(s),${hours} hours, ${minutes} minutes, ${seconds} seconds\``
     );
-  return message.channel.send(uptimeEmbed).catch(console.error);
+  return message.lineReplyNoMention(uptimeEmbed).catch(console.error);
 };
 
 exports.help = {

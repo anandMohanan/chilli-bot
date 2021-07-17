@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
       title: "ChaosWords | Weky Development",
       description:
         "You have **{{time}}** to find the hidden words in the below sentence.",
-      color: "#7289da",
+      color: "#674AB3",
       field1: "Sentence:",
       field2: "Words Found/Remaining Words:",
       field3: "Words found:",

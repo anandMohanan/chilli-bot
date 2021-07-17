@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
   let avatar = await user.displayAvatarURL({ dynamic: false, format: "png" });
   let level = 5;
   let image = await new DIG.Blur().getImage(avatar, level);
-  return await message.channel.send(image);
+  return await message.lineReply(image);
 };
 
 exports.help = {

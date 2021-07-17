@@ -11,9 +11,9 @@ exports.run = async (client, message, args) => {
     let joke = await data.json();
     let jokes = joke.attachments[0].text;
     let jokeEmbed = new MessageEmbed()
-      .setColor("#ff0000")
+      .setColor("#A348A6")
       .setDescription(jokes);
-    await message.channel.send(jokeEmbed);
+    await message.lineReplyNoMention(jokeEmbed);
   } catch (err) {
     console.log(err);
   }

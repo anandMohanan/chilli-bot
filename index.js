@@ -1,9 +1,11 @@
 /** @format */
 
 const Discord = require("discord.js");
+require("discord-reply");
 const ChilliBot = require("./handler/ClientBuilder.js");
 
 const client = new ChilliBot();
+
 require("@weky/inlinereply");
 const { MessageEmbed } = require("discord.js");
 const distub = require("discord-buttons");

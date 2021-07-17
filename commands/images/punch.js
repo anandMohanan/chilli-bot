@@ -6,7 +6,7 @@ const random = new Random();
 exports.run = async (client, message, args) => {
   try {
     if (message.mentions.users.size < 1)
-      return message.channel.send("you can't punch nobody").then((msg) => {
+      return message.lineReply("you can't punch nobody").then((msg) => {
         msg.delete({ timeout: 10000 });
       });
     let user = message.mentions.users.first();
@@ -15,9 +15,9 @@ exports.run = async (client, message, args) => {
     const punchEmb = new MessageEmbed()
       .setTitle(`${message.author.username} punched ${user.username}`)
       .setImage(data)
-      .setColor("#ff0000")
+      .setColor("#A348A6")
       .setTimestamp();
-    message.channel.send(punchEmb);
+    message.lineReply(punchEmb);
   } catch (err) {}
 };
 exports.help = {

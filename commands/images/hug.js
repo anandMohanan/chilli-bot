@@ -6,7 +6,7 @@ const random = new Random();
 exports.run = async (client, message, args) => {
   try {
     if (message.mentions.users.size < 1)
-      return message.channel.send("you can't hug nobody").then((msg) => {
+      return message.lineReply("you can't hug nobody").then((msg) => {
         msg.delete({ timeout: 10000 });
       });
     let user = message.mentions.users.first();
@@ -16,9 +16,9 @@ exports.run = async (client, message, args) => {
         `${user.username}, You got a hug from ${message.author.username} ❤`
       )
       .setImage(data)
-      .setColor("#ff0000")
+      .setColor("#A348A6")
       .setTimestamp();
-    message.channel.send(hugEmb);
+    message.lineReply(hugEmb);
   } catch (err) {}
 };
 exports.help = {

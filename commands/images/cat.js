@@ -9,9 +9,9 @@ exports.run = async (client, message, args) => {
     const finalImg = await catImage[0].url;
     const catImg = new MessageEmbed()
       .setImage(finalImg)
-      .setColor("#ff0000")
+      .setColor("#A348A6")
       .setTimestamp();
-    message.channel.send(catImg);
+    message.lineReply(catImg);
   } catch (err) {}
 };
 exports.help = {

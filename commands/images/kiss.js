@@ -6,7 +6,7 @@ const random = new Random();
 exports.run = async (client, message, args) => {
   try {
     if (message.mentions.users.size < 1)
-      return message.channel.send("you can't kiss nobody").then((msg) => {
+      return message.lineReply("you can't kiss nobody").then((msg) => {
         msg.delete({ timeout: 10000 });
       });
     let user = message.mentions.users.first();
@@ -16,10 +16,10 @@ exports.run = async (client, message, args) => {
       .setTitle(
         `${user.username}, You got a kiss from ${message.author.username} ❤`
       )
-      .setColor("#ff0000")
+      .setColor("#A348A6")
       .setImage(data)
       .setTimestamp();
-    message.channel.send(kissEmb);
+    message.lineReply(kissEmb);
   } catch (err) {}
 };
 exports.help = {

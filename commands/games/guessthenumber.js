@@ -2,16 +2,18 @@ const Discord = require("discord.js");
 const { GuessTheNumber } = require("weky");
 
 exports.run = async (client, message, args) => {
+  let randomNumber = Math.floor(Math.random() * 1000);
+  console.log(randomNumber)
   await GuessTheNumber({
     message: message,
     embed: {
       title: "Guess The Number ",
       description: "You have **{{time}}** to guess the number.",
-      color: "#7289da",
+      color: "#674AB3",
       timestamp: true,
     },
     publicGame: true,
-    number: 189,
+    number: randomNumber,
     time: 60000,
     winMessage: {
       publicGame:

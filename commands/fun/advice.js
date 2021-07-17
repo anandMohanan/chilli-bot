@@ -11,9 +11,9 @@ exports.run = async (client, message, args) => {
     console.log(advice);
     let adviceEmbed = new MessageEmbed()
       .setAuthor("Advice")
-      .setColor("#ff0000 ")
+      .setColor("#A348A6 ")
       .setDescription(ans);
-    message.channel.send(adviceEmbed);
+    message.lineReplyNoMention(adviceEmbed);
   } catch (err) {
     message.channel.send(
       `An error occurred: \`${err.message}\`. Try again later!`

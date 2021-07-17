@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
     };
     const shuffled = shuffle(answers);
     let msgQuestion = new Discord.MessageEmbed()
-      .setColor("#ff0000")
+      .setColor("#A348A6")
       .setTitle("You have 15 seconds").setDescription(`${decodeURIComponent(
       correctQuestion
     )}
@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
     // 		${decodeURIComponent(correctQuestion)}
     // 		${shuffled.map((answer, i) => `**${choices[i]}.** ${answer}`).join("\n")}
     // 	`);
-    await message.reply(msgQuestion);
+    await message.lineReply(msgQuestion);
     const filter = (res) =>
       res.author.id === message.author.id &&
       choices.includes(res.content.toUpperCase());
@@ -47,11 +47,11 @@ exports.run = async (client, message, args) => {
       time: 15000,
     });
     if (!msgs.size)
-      return message.reply(`Sorry, time is up! It was ${correct}.`);
+      return message.lineReplyNoMention(`Sorry, time is up! It was ${correct}.`);
     const win =
       shuffled[choices.indexOf(msgs.first().content.toUpperCase())] === correct;
-    if (!win) return message.reply(`Nope, sorry, it's ${correct}.`);
-    return message.reply("Nice job! Correct answer");
+    if (!win) return message.lineReplyNoMention(`Nope, sorry, it's ${correct}.`);
+    return message.lineReply("Nice job! Correct answer");
   } catch (err) {
     console.log(err);
   }
