@@ -3,11 +3,25 @@ const fetch = require("node-fetch");
 
 exports.run = async (client, message, args) => {
   let user = message.mentions.users.first();
-  if (message.mentions.users === message.author.username)
-    return message.lineReply("You can not roast yourself");
-  if (message.mentions.users.size < 1)
-    return message.lineReply("You must mention someone to roast them.");
-
+  console.log(client.config.owners[0]);
+  if (user.id === client.config.owners[0]) {
+    let roastAnnan = new Discord.MessageEmbed()
+      .setColor("#A348A6")
+      .setDescription("How dare you roast annan!!!!!!!");
+    return message.lineReply(roastannan);
+  }
+  if (user.id === message.author.id) {
+    let roastMention = new Discord.MessageEmbed()
+      .setColor("#A348A6")
+      .setDescription("You can not roast yourself");
+    return message.lineReply(roastMention);
+  }
+  if (message.mentions.users.size < 1) {
+    let roastArg = new Discord.MessageEmbed()
+      .setColor("#A348A6")
+      .setDescription("You must mention someone to roast them.");
+    return message.lineReply(roastArg);
+  }
   let body = await fetch(
     "https://evilinsult.com/generate_insult.php?lang=en&type=json"
   );
