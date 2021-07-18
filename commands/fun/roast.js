@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
     let roastAnnan = new Discord.MessageEmbed()
       .setColor("#A348A6")
       .setDescription("How dare you roast annan!!!!!!!");
-    return message.lineReply(roastannan);
+    return message.lineReply(roastAnnan);
   }
   if (user.id === message.author.id) {
     let roastMention = new Discord.MessageEmbed()
