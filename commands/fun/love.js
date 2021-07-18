@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
       .setDescription(
         `
         💖${randomUser} is a ${affinity}% match for ${message.author.username}
-        💖`
+        `
       );
     return message.lineReply(loveNoMention);
   }
@@ -36,7 +36,7 @@ exports.run = async (client, message, args) => {
       .setDescription(
         `
         💖${user.username} is a ${affinity}% match for ${message.author.username}
-        💖`
+        `
       );
     return message.lineReply(loveMention);
   }
@@ -46,7 +46,7 @@ exports.run = async (client, message, args) => {
     .setDescription(
       `
       💖${user} is a ${affinity}% match for ${message.author.username} 
-      💖`
+      `
     );
   return message.lineReply(loveMention);
 };
