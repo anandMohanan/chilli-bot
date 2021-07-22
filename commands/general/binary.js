@@ -1,57 +1,65 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 
 exports.run = async (client, message, args) => {
   if (!args[0]) {
-    return message.lineReply( '`Unknown parameter. Please choose the method first, either decode or encode it.`');
+    return message.lineReply(
+      "`Unknown parameter. Please choose the method first, either decode or encode it.`"
+    );
   }
-  let choice = ['encode', 'decode'];
+  let choice = ["encode", "decode"];
   if (!choice.includes(args[0].toLowerCase())) {
-    return message.lineReply( '`Unknown parameter. Please choose the method first, either decode or encode it.`');
+    return message.lineReply(
+      "`Unknown parameter. Please choose the method first, either decode or encode it.`"
+    );
   }
-  let text = args.slice(1).join(' ');
+  let text = args.slice(1).join(" ");
   // binary <encode | decode> <text>
   // binary encode blob development
 
   if (!text) {
-    return message.lineReply('`Unknown parameter. Please choose the method first, either decode or encode it.`');
+    return message.lineReply(
+      "`Unknown parameter. Please choose the method first, either decode or encode it.`"
+    );
   }
 
   // Do this because more than that, the binary code wouldn't be fit anymore.
   if (text.length > 1024) {
-    return message.lineReply('`That is way too much. The maximum character was 1,024.`');
+    return message.lineReply(
+      "`That is way too much. The maximum character was 1,024.`"
+    );
   }
   function encode(char) {
     return char
-      .split('')
+      .split("")
       .map((str) => {
         const converted = str.charCodeAt(0).toString(2);
-        return converted.padStart(8, '0');
+        return converted.padStart(8, "0");
       })
-      .join(' ');
+      .join(" ");
   }
 
   function decode(char) {
     return char
-      .split(' ')
+      .split(" ")
       .map((str) => String.fromCharCode(Number.parseInt(str, 2)))
-      .join('');
+      .join("");
   }
 
-  if (args[0].toLowerCase() === 'encode') {
+  if (args[0].toLowerCase() === "encode") {
     return message.lineReplyNoMention(encode(text));
-  } else if (args[0].toLowerCase() === 'decode') {
+  } else if (args[0].toLowerCase() === "decode") {
     return message.lineReplyNoMention(decode(text));
   }
 };
 
 exports.help = {
-  name: 'binary',
-  description: 'Convert text to binary or otherwise.',
-  usage: 'binary <encode | decode> <text>',
-  example: 'binary encode javascript development',
+  name: "binary",
+  description: "Convert text to binary or otherwise.",
+  usage: "binary <encode | decode> <text>",
+  example: "binary encode javascript development",
 };
 
 exports.conf = {
-  aliases: ['b'],
+  aliases: ["b"],
   cooldown: 5,
 };

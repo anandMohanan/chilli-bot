@@ -1,13 +1,13 @@
-const Discord = require('discord.js'),
+const Discord = require("discord.js"),
   cooldowns = new Discord.Collection();
 // cooldowns will store the user when they are still in the cooldown mode.
-
+const { MessageEmbed } = require("discord.js");
 module.exports = async (client, message) => {
   // Prevent any chit-chats with other bots, or by himself.
   if (message.author.bot || message.author === client.user) return;
 
   // Remove this if you want the bot are be able to execute a command inside DMs.
-  if (message.channel.type === 'dm') return;
+  if (message.channel.type === "dm") return;
 
   let prefix = client.config.prefix;
 
@@ -22,7 +22,7 @@ module.exports = async (client, message) => {
   // Many people don't know what is message.flags.
   // We've already seen a bot who has a message.flags or they would called, parameter things.
   message.flags = [];
-  while (args[0] && args[0][0] === '-') {
+  while (args[0] && args[0][0] === "-") {
     message.flags.push(args.shift().slice(1)); // Example: /play -soundcloud UP pice
   }
 

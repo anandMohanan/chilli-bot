@@ -27,19 +27,8 @@ require("./handler/Event.js")(client);
 client.package = require("./package.json");
 
 client.on("ready", () => {
-  function randomStatus() {
-    let status = [
-      `It is not possible either to trick or escape the mind of Zeus.`,
-      `Open your mouth and shut your eyes and see what Zeus will send you.`,
-      `Zeus, the father of the Olympic Gods, turned mid-day into night, hiding the light of the dazzling Sun`,
-      `For know that no one is free, except Zeus.`,
-      `The wise is one only. It is unwilling and willing to be called by the name of Zeus.`,
-      `The will was of Zeus, the hand of Hephaestus.`,
-    ];
-    let rstatus = Math.floor(Math.random() * status.length);
-    client.user.setActivity(status[rstatus], { type: "CUSTOM_STATUS" });
-  }
-  setInterval(randomStatus, 1000000);
+  client.user.setActivity(`=help`, { type: "WATCHING" });
+  client.user.setStatus("dnd");
 });
 
 const min = 10; //Minimum of 10
