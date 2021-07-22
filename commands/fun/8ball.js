@@ -22,22 +22,26 @@ const answers = [
   "Very doubtful.",
 ];
 exports.run = async (client, message, args) => {
-  const question = args.join(" ");
-  if (!question)
-    return this.sendErrorMessage(
-      message,
-      0,
-      "Please provide a question to ask"
-    );
-  const embed = new MessageEmbed()
-    .setTitle("The Magic 8-Ball")
-    .addField("Question", question)
-    .addField(
-      "Answer",
-      `${answers[Math.floor(Math.random() * answers.length)]}`
-    )
-    .setColor("#A348A6");
-  message.lineReplyNoMention(embed);
+  try {
+    const question = args.join(" ");
+    if (!question)
+      return this.sendErrorMessage(
+        message,
+        0,
+        "Please provide a question to ask"
+      );
+    const embed = new MessageEmbed()
+      .setTitle("The Magic 8-Ball")
+      .addField("Question", question)
+      .addField(
+        "Answer",
+        `${answers[Math.floor(Math.random() * answers.length)]}`
+      )
+      .setColor("#A348A6");
+    message.lineReplyNoMention(embed);
+  } catch (err) {
+    console.log(err);
+  }
 };
 exports.help = {
   name: "8ball",

@@ -7,8 +7,6 @@ exports.run = async (client, message, args) => {
     const body = await fetch("http://api.adviceslip.com/advice");
     const advice = await body.json();
     const ans = advice.slip.advice;
-    console.log(ans);
-    console.log(advice);
     let adviceEmbed = new MessageEmbed()
       .setAuthor("Advice")
       .setColor("#A348A6 ")

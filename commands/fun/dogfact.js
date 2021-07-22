@@ -12,13 +12,7 @@ exports.run = async (client, message, args) => {
       .setColor("#A348A6");
     message.lineReplyNoMention(embed);
   } catch (err) {
-    message.client.logger.error(err.stack);
-    this.sendErrorMessage(
-      message,
-      1,
-      "Please try again in a few seconds",
-      err.message
-    );
+    console.log(err);
   }
 };
 

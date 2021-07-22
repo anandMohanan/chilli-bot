@@ -1,17 +1,21 @@
 const Discord = require("discord.js");
 
 exports.run = async (client, message, args) => {
-  let randomNumber = Math.floor(Math.random() * 18);
-  const cockSize = randomNumber;
-  const balls = "8";
-  const shaft = "=".repeat(cockSize);
-  const head = "D";
-  const cock = balls + shaft + head;
-  let pingEmbed = new Discord.MessageEmbed()
-    .setColor("#A348A6")
-    .setAuthor(`${cockSize} inch(es)`)
-    .setDescription(cock);
-  message.lineReplyNoMention(pingEmbed);
+  try {
+    let randomNumber = Math.floor(Math.random() * 18);
+    const cockSize = randomNumber;
+    const balls = "8";
+    const shaft = "=".repeat(cockSize);
+    const head = "D";
+    const cock = balls + shaft + head;
+    let pingEmbed = new Discord.MessageEmbed()
+      .setColor("#A348A6")
+      .setAuthor(`${cockSize} inch(es)`)
+      .setDescription(cock);
+    message.lineReplyNoMention(pingEmbed);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 exports.help = {

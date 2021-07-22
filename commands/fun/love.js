@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 const fetch = require("node-fetch");
 
 exports.run = async (client, message, args) => {
+  try{
   let user = message.mentions.users.first();
   let randomUser = message.guild.members.cache.random().user;
   const affinity = Math.round(Math.random() * 100);
-  console.log(client.config.owners[0]);
   if (!args[0]) {
     // let loveMention = new Discord.MessageEmbed()
     //   .setColor("#A348A6")
@@ -49,6 +49,9 @@ exports.run = async (client, message, args) => {
       `
     );
   return message.lineReply(loveMention);
+    }catch(err){
+      console.log(err)
+    }
 };
 
 exports.help = {
