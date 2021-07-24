@@ -15,12 +15,14 @@ exports.run = async (client, message, args) => {
       dynamic: false,
       format: "png",
     });
-    let jakfh = new Discord.MessageAttachment(img1, "fdgdfg.png");
-    let jhjhg = new Discord.MessageAttachment(img2, "hjfgfd.png");
-    message.channel.send(jakfh);
-    message.channel.send(jhjhg);
+
     let image = await new DIG.Blink().getImage(img1, img2);
-    return await message.lineReply(image);
+    let attach = new Discord.MessageAttachment(image, "blink.gif");
+    const embed = new MessageEmbed()
+      .setTimestamp()
+      .setColor("#64CFF7")
+      .setImage("attachment://blink.gif");
+    return await message.lineReply({ files: [attach], embed });
   } catch (err) {
     console.log(err);
   }

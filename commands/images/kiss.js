@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
       .setTitle(
         `${user.username}, You got a kiss from ${message.author.username} ❤`
       )
-      .setColor("#A348A6")
+      .setColor("#64CFF7")
       .setImage(data)
       .setTimestamp();
     message.lineReply(kissEmb);

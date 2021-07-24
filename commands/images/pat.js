@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
     const patEmb = new MessageEmbed()
       .setTitle(`${message.author.username} patted ${user.username} ❤`)
       .setImage(data)
-      .setColor("#A348A6")
+      .setColor("#64CFF7")
       .setTimestamp();
     message.lineReply(patEmb);
   } catch (err) {}

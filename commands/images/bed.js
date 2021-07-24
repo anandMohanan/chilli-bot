@@ -5,7 +5,7 @@ const DIG = require("discord-image-generation");
 exports.run = async (client, message, args) => {
   try {
     if (message.mentions.users.size < 1)
-      return message.channel.send("you can't blink nobody").then((msg) => {
+      return message.channel.send("mention someone").then((msg) => {
         msg.delete({ timeout: 10000 });
       });
     let user = message.mentions.users.first();
@@ -20,7 +20,12 @@ exports.run = async (client, message, args) => {
     //message.channel.send(jakfh);
     //message.channel.send(jhjhg);
     let image = await new DIG.Bed().getImage(img1, img2);
-    return await message.lineReply(attach);
+    let attach = new Discord.MessageAttachment(image, "bed.png");
+    const embed = new MessageEmbed()
+      .setTimestamp()
+      .setColor("#64CFF7")
+      .setImage("attachment://bed.png");
+    return await message.lineReply({ files: [attach], embed });
   } catch (err) {
     console.log(err);
   }

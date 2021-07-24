@@ -15,7 +15,11 @@ exports.run = async (client, message, args) => {
   let avatar = await user.displayAvatarURL({ dynamic: false, format: "png" });
   let image = await new DIG.Facepalm().getImage(avatar);
   let attach = new Discord.MessageAttachment(image, "facepalm.png");
-  return await message.lineReply(attach);
+  const embed = new MessageEmbed()
+    .setTimestamp()
+    .setColor("#64CFF7")
+    .setImage("attachment://facepalm.png");
+  return await message.lineReply({ files: [attach], embed });
 };
 
 exports.help = {

@@ -14,8 +14,12 @@ exports.run = async (client, message, args) => {
 
   let avatar = await user.displayAvatarURL({ dynamic: false, format: "png" });
   let image = await new DIG.ConfusedStonk().getImage(avatar);
-  let attach = new Discord.MessageAttachment(image, "confusedStonk.png");
-  return await message.lineReply(attach);
+  let attach = new Discord.MessageAttachment(image, "confusedstonk.png");
+  const embed = new MessageEmbed()
+    .setTimestamp()
+    .setColor("#64CFF7")
+    .setImage("attachment://confusedstonk.png");
+  return await message.lineReply({ files: [attach], embed });
 };
 
 exports.help = {

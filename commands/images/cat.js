@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
     const finalImg = await catImage[0].url;
     const catImg = new MessageEmbed()
       .setImage(finalImg)
-      .setColor("#A348A6")
+      .setColor("#64CFF7")
       .setTimestamp();
     message.lineReply(catImg);
   } catch (err) {}

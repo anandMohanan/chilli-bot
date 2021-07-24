@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
     const slapEmb = new MessageEmbed()
       .setTitle(`${message.author.username} slapped ${user.username}`)
       .setImage(data)
-      .setColor("#A348A6")
+      .setColor("#64CFF7")
       .setTimestamp();
     message.lineReply(slapEmb);
   } catch (err) {}

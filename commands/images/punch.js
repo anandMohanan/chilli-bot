@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
     const punchEmb = new MessageEmbed()
       .setTitle(`${message.author.username} punched ${user.username}`)
       .setImage(data)
-      .setColor("#A348A6")
+      .setColor("#64CFF7")
       .setTimestamp();
     message.lineReply(punchEmb);
   } catch (err) {}

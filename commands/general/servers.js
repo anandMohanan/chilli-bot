@@ -1,10 +1,11 @@
 const Discord = require("discord.js");
-
+const { MessageMenuOption } = require("discord-buttons");
 exports.run = async (client, message, args) => {
   let serverEmbed = new Discord.MessageEmbed()
     .setColor("#A348A6")
     .setDescription(client.guilds.cache.array().join("\n"));
-  message.lineReplyNoMention(serverEmbed);
+
+  message.lineReply(serverEmbed);
 };
 
 exports.help = {

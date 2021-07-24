@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
         `${user.username}, You got a hug from ${message.author.username} ❤`
       )
       .setImage(data)
-      .setColor("#A348A6")
+      .setColor("#64CFF7")
       .setTimestamp();
     message.lineReply(hugEmb);
   } catch (err) {}

@@ -2,7 +2,7 @@
 
 const Discord = require("discord.js");
 require("discord-reply");
-const { GiveawayCreator } = require("discord-giveaway");
+// const { GiveawayCreator } = require("discord-giveaway");
 const ChilliBot = require("./handler/ClientBuilder.js");
 
 const client = new ChilliBot();
@@ -11,13 +11,14 @@ require("@weky/inlinereply");
 const { MessageEmbed } = require("discord.js");
 const distub = require("discord-buttons");
 distub(client);
+const { DiscordTogether } = require("discord-together");
 
-const Creator = new GiveawayCreator(
-  client,
-  process.env.MONGO_URI,
-  "",
-  "#556DC8"
-);
+// const Creator = new GiveawayCreator(
+//   client,
+//   process.env.MONGO_URI,
+//   "",
+//   "#556DC8"
+// );
 // const http = require("http");
 // http
 //   .createServer(function (req, res) {
@@ -32,7 +33,8 @@ require("./handler/Module.js")(client);
 require("./handler/Event.js")(client);
 
 client.package = require("./package.json");
-client.giveaways = Creator;
+client.discordTogether = new DiscordTogether(client);
+// client.giveaways = Creator;
 client.on("ready", () => {
   client.user.setActivity(`=help`, { type: "WATCHING" });
   client.user.setStatus("dnd");
@@ -55,8 +57,6 @@ client.on("message", async (message) => {
   // Make Sure this Code is under Message Event Listener
 });
 
-console.log(process.env.BOT_TOKEN);
-console.log(process.env.MONGO_URI);
 client.on("warn", console.warn); // This will warn you via logs if there was something wrong with your bot.
 client.on("error", console.error); // This will send you an error message via logs if there was something missing with your coding.
 client.login(process.env.BOT_TOKEN).catch(console.error); // This token will leads to the .env file. It's safe in there.

@@ -15,7 +15,12 @@ exports.run = async (client, message, args) => {
   let avatar = await user.displayAvatarURL({ dynamic: false, format: "png" });
   let level = 5;
   let image = await new DIG.Blur().getImage(avatar, level);
-  return await message.lineReply(image);
+  let attach = new Discord.MessageAttachment(image, "blur.png");
+  const embed = new MessageEmbed()
+    .setTimestamp()
+    .setColor("#64CFF7")
+    .setImage("attachment://blur.png");
+  return await message.lineReply({ files: [attach], embed });
 };
 
 exports.help = {

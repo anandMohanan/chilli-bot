@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
     let data = await random.getAnimeImgURL("waifu");
     const waifuEmbed = new MessageEmbed()
       .setTitle(":)")
-      .setColor("#A348A6")
+      .setColor("#64CFF7")
       .setImage(data)
       .setTimestamp();
     message.lineReply(waifuEmbed);

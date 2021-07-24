@@ -16,7 +16,11 @@ exports.run = async (client, message, args) => {
   //let level = 5;
   let image = await new DIG.Gay().getImage(avatar);
   let attach = new Discord.MessageAttachment(image, "gay.png");
-  return await message.lineReply(attach);
+  const embed = new MessageEmbed()
+    .setTimestamp()
+    .setColor("#64CFF7")
+    .setImage("attachment://gay.png");
+  return await message.lineReply({ files: [attach], embed });
 };
 
 exports.help = {

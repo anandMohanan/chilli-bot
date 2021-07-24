@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
         message.author.displayAvatarURL({ dynamic: true })
       )
       .setTimestamp()
-      .setColor("#A348A6");
+      .setColor("#64CFF7");
     message.lineReply(embed);
   } catch (err) {
     message.client.logger.error(err.stack);

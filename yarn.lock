@@ -898,6 +898,14 @@ discord-reply@^0.1.2:
   dependencies:
     discord.js "^12.5.1"
 
+discord-together@^1.1.31:
+  version "1.1.31"
+  resolved "https://registry.yarnpkg.com/discord-together/-/discord-together-1.1.31.tgz#56d2f151787fa8c51f550d5bf1da912822c2be99"
+  integrity sha512-G1WjIIBH6mjvjoWCwJUDj+Di1vy+mAi7KglXMdclpllB1vWoVS6CKwzESouZ7k7BXerEra+7y5AHLrufHrku4A==
+  dependencies:
+    discord.js "^12.5.3"
+    node-fetch "^2.6.1"
+
 discord.js@^12.3.1, discord.js@^12.5.1, discord.js@^12.5.3:
   version "12.5.3"
   resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-12.5.3.tgz#56820d473c24320871df9ea0bbc6b462f21cf85c"

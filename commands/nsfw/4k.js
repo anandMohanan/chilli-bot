@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
   if (message.channel.nsfw) {
     const image = await nsfw.fourk();
     const embed = new Discord.MessageEmbed().setColor("RED").setImage(image);
-    message.channel.send(embed);
+    message.lineReply(embed);
   } else {
     let button = new MessageButton()
       .setLabel("Click for 4k lesbian porn")

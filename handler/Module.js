@@ -35,12 +35,13 @@ module.exports = (client) => {
 
           client.commands.set(prop.help.name, prop);
 
-          console.log(prop.help.name);
+          //console.log(prop.help.name);
           prop.conf.aliases.forEach((alias) => {
             client.aliases.set(alias, prop.help.name);
           });
 
           client.helps.get(category).cmds.push(prop.help.name);
+
           // This will push the data into Collection, which is includes name of the file, aliases, and many.
         });
       });
